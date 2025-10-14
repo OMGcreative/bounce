@@ -28,6 +28,56 @@
     --semi-font-weight: 600;
     --bold-font-weight: 700;
     --black-font-weight: 900;
+    
+    /* Font */
+  	--font-roboto: Roboto;
+  	--font-sofia-pro: Sofia Pro;
+  	
+  	/* FontSize */
+    --fs-10: 1rem; /* 10px */
+    --fs-12: 1.2rem; /* 12px */
+    --fs-14: 1.4rem; /* 14px */
+  	--fs-14: 0.875rem;
+  	--fs-16: 1rem;
+  	--fs-18: 1.125rem;
+  	--fs-24: 1.5rem;
+  	--fs-32: 2rem;
+    --fs-40: 2.5rem; /* 40px */
+    --fs-48: 3rem; /* 48px */
+    --fs-56: 3.5rem; /* 56px */
+    --fs-64: 4rem; /* 64px */
+    --fs-72: 4.5rem; /* 72px */
+    --fs-80: 5rem; /* 80px */
+    --fs-88: 5.5rem; /* 88px */
+    --fs-96: 6rem; /* 96px */
+    --fs-104: 6.5rem; /* 104px */
+
+    --h1-font-size: 6rem;
+    --xl-font-size: 6rem;
+    --h2-font-size: 4rem;
+    --h3-font-size: 3rem;
+    --h4-font-size: 2.5rem;
+    --h5-font-size: 2rem;
+    --h6-font-size: 1.5rem;
+    --p-font-size: 1.6rem;
+    --small-font-size: 1.4rem;
+    --button-font-size: 1.6rem;
+    --link-font-size: 1.6rem;
+    --label-font-size: 1.4rem;
+
+    /* LetterSpacing */
+    --ls-tight: -0.02em;
+    --ls-normal: 0em;
+    --ls-wide: 0.02em;
+    --ls-wider: 0.04em;
+
+    /* LineHeight */
+    --header-line-height: 1.2;
+    --button-line-height: 1.5;
+    --link-line-height: 1.5;
+    --label-line-height: 1.5;
+    --p-line-height: 1.6;
+    --small-line-height: 1.5;
 
 }
 
@@ -54,8 +104,93 @@ h1, h2, h3, h4, h5, h6, b, strong {
     font-family: var(--header-font-family);
     font-weight: var(--heading-font-weight);
 }
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
+h1 {
+    /* font-size: 3.5rem; */
+    line-height: 120%;
+}
+h1.headline {
+    /* font-size: var(--xl-font-size); */
+    font-size: clamp(3.5rem, 5vw, 6rem);
+    font-weight: var(--bold-font-weight);
+    line-height: 1;
+    letter-spacing: var(--ls-tight);
+}
+@media screen and (max-width: 768px) {
+    h1.headline {
+        font-size: clamp(2.25rem, 6vw, 4rem);
+    }
+}
+
+h2, h3, h4, h5, h6 {
+    line-height: var(--header-line-height);
+    letter-spacing: var(--ls-tight);
     margin-bottom: 1rem;
-    color: var(--color-black);
+    /* color: var(--color-black); */
+}
+
+h2 {
+    /* font-size: var(--h2-font-size); */
+    font-size: clamp(3rem, 4.5vw, 5rem);
+}
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: clamp(2.25rem, 6vw, 4rem);
+    }
+}
+
+h2.subtitle {
+    /* font-size: var(--h2-font-size); */
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: var(--fs-32);
+    line-height: 100%;
+    font-weight: var(--reg-font-weight);
+}
+
+h3 {
+    /* font-size: var(--h3-font-size); */
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+h4 {
+    /* font-size: var(--h4-font-size); */
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    line-height: 1.2;
+}
+h5 {
+    /* font-size: var(--h5-font-size); */
+    font-size: clamp(1.25rem, 3vw, 2rem);
+}
+.tagline {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+h6 {
+    /* font-size: var(--h6-font-size); */
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+h6.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 0;
+}
+
+p.large {
+    font-size: var(--fs-20);
+  	line-height: 150%;
+  	margin-block-start: 0;
+  	margin-block-end: 15px;
+}
+
+a {
+    /* color: var(--default); */
+
+    text-decoration: none;
+    font-weight: var(--link-font-weight);
+    /* font-size: var(--link-font-size); */
+    line-height: var(--link-line-height);
+    letter-spacing: var(--ls-normal);
+    transition: var(--transition-link);
+    text-underline-offset: 1px;
+}
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    /* color: var(--color-primary); */
 }

@@ -80,51 +80,9 @@ body {
   	margin: 0;
   	line-height: normal;
 }
-
-
+ 
 :root {
-  	
-  	/* Common Style Variables */
-  	
-  	/* Color */
-  	--color-black: #000;
-  	--color-firebrick: #c41212;
-  	--color-gray-100: #121212;
-  	--color-gray-200: rgba(0, 0, 0, 0.6);
-  	--color-gray-300: rgba(255, 255, 255, 0.95);
-  	--color-white: #fff;
-  	
-  	/* Gap */
-  	--gap-10: 0.625rem;
-  	
-  	/* Padding */
-  	--padding-12: 0.75rem;
-  	
-  	/* BorderRadius */
-  	--br-6: 6px;
-  	
-  	/* Font */
-  	--font-roboto: Roboto;
-  	--font-sofia-pro: Sofia Pro;
-  	
-  	/* FontSize */
-  	--fs-14: 0.875rem;
-  	--fs-16: 1rem;
-  	
-}
-
-
-body {
-  	margin: 0;
-  	line-height: normal;
-}
-
-
-:root {
-  	
-  	/* Common Style Variables */
-  	
-  	
+ 
   	/* Gap */
   	--gap-4: 0.25rem;
   	--gap-8: 0.5rem;
@@ -133,29 +91,25 @@ body {
   	--gap-20: 1.25rem;
   	--gap-24: 1.5rem;
   	--gap-32: 2rem;
+  	--gap-48: 3rem;
   	--gap-80: 5rem;
   	
   	/* Padding */
-  	--padding-0: 0rem;
   	--padding-8: 0.5rem;
   	--padding-12: 0.75rem;
+	--padding-16: 1rem;
   	--padding-20: 1.25rem;
   	--padding-24: 1.5rem;
+  	--padding-32: 2rem;
   	--padding-64: 4rem;
   	
   	/* BorderRadius */
   	--br-6: 6px;
-  	
-  	/* Font */
-  	--font-roboto: Roboto;
-  	--font-sofia-pro: Sofia Pro;
-  	
-  	/* FontSize */
-  	--fs-14: 0.875rem;
-  	--fs-16: 1rem;
-  	--fs-18: 1.125rem;
-  	--fs-24: 1.5rem;
-  	--fs-32: 2rem;
+	--br-12: 12px;
+	--br-16: 16px;
+	--br-24: 24px;
+  	--br-32: 32px;
+	--br-50: 50%;
   	
   	/* Borders */
   	--border-1: 1px solid var(--color-red);

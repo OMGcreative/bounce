@@ -1,0 +1,72 @@
+/* forms */
+
+
+
+form {
+    position: relative;
+    /* max-width: 360px; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0 0 0;
+    color: var(--black);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+form textarea { 
+    /* width: 100% !important; */
+    height:30px;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: 1px solid var(--default);
+}
+
+form input:not([type="submit"]) {
+    font-size: 1rem;
+}
+
+form label {
+    font-size: 0.8rem;
+}
+#disclaimer + label a {
+    color: var(--black) !important;
+    font-size: 0.8rem;
+}
+
+form button[type="submit"] {
+    
+}
+
+
+[type="checkbox"] + span {
+    font-size: 0.8rem;
+    display: block;
+}
+
+[for=consent], [name=consent] {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.form_chckbx_grp label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+

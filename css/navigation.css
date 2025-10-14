@@ -1,0 +1,54 @@
+
+.navbar {
+  	width: 100%;
+  	height: 4.5rem;
+  	margin: 0 !important;
+  	position: fixed;
+  	top: 0rem;
+  	left: 0rem;
+  	background-color: rgba(var(--color-white-rgb), 0.9);
+	backdrop-filter: blur(10px);
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 2rem var(--padding-32);
+  	box-sizing: border-box;
+  	z-index: 444;
+  	font-family: var(--font-roboto);
+}
+.nav-container {
+  	align-self: stretch;
+  	display: flex;
+  	align-items: center;
+}
+.nav-content {
+  	height: 2.75rem;
+  	width: 8.875rem;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+.nav-logo {
+  	height: 2.8rem;
+  	width: 8.875rem;
+  	position: relative;
+}
+.rideshare-icon {
+  	/* position: absolute;
+  	height: 15.85%;
+  	width: 29.93%;
+  	top: 84.07%;
+  	right: 69.49%;
+  	bottom: 0.08%;
+  	left: 0.58%;
+  	max-width: 100%;
+  	overflow: hidden;
+  	max-height: 100%; */
+}
+.rideshare-icon svg {
+  	width: 100%;
+  	height: 100%;
+  	object-fit: contain;
+}
+
