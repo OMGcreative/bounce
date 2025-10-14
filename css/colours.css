@@ -1,0 +1,65 @@
+/* colours.css */
+
+:root {
+    /* page */
+    --page-variable: var(--default);
+    /* colours */
+    /* primary */
+    --color-primary-light: #FF3232;
+    --color-primary-medium: #F21616;
+    --color-primary: #C41212;
+    --color-primary-rgb: 196, 18, 18;  
+    --color-primary-dark: #960000;
+    --color-primary-dark-rgb: 150, 0, 0;
+    --bounce-red: var(--color-primary);
+    --color-red: var(--color-primary);
+
+    /* secondary */
+    --color-secondary-light: #3B16F3;
+    --color-secondary-medium: #3012C5;
+    --color-secondary: #240D96;
+    --color-secondary-rgb: 36, 13, 150;
+    --color-secondary-dark: #0C0338;
+    --color-secondary-dark-rgb: 12, 3, 56;
+
+    --color-grey-medium: #e5e1e9;
+    --color-grey-light: #edebf0;
+    /* mono */
+    --color-white: #FFFFFF;
+    --white: var(--color-white);
+    --color-whitesmoke: #f5f5f5;
+    --color-white-rgb: 255,255,255;
+    --color-black: #1d1d1d;
+    --black: var(--color-black);
+    --color-black-rgb: 29, 29, 29 ;
+
+    --color-mono-light: rgb(194, 194, 194);    
+    --color-mono: rgb(133, 133, 133);    
+    --color-mono-med: rgb(107, 107, 107);
+    --color-mono-dark: #4f4f4f;
+    --color-mono-rgb: 133, 133, 133;
+
+    /* Color */
+  	--color-gray-100: #121212;
+  	--color-gray-200: rgba(0, 0, 0, 0.6);
+  	
+}
+
+
+.mono {
+    --default: var(--color-mono);
+    --default-light: var(--color-mono-light);
+    --default-dark: var(--color-mono-dark);
+    --default-rgb: var(--color-mono-rgb);
+    --default-link: var(--color-mono-dark);
+}
+
+.home, .bounce-red, .bounce {
+    --default: var(--color-primary);
+    --default-light: var(--color-primary-light);
+    --default-medium: var(--color-primary-medium);
+    --default-dark: var(--color-primary-dark);
+    --default-rgb: var(--color-primary-rgb);
+    --default-link: var(--color-primary-dark);
+}
+

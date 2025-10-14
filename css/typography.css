@@ -1,0 +1,61 @@
+/* typography */
+
+@import url("https://use.typekit.net/low7hsv.css");
+
+:root {
+    --font-sofia-pro: var(--base-font-family);
+    --base-font-family: sofia-pro,'Sofia Pro', Arial,sans-serif;
+    --header-font-family: sofia-pro, 'Sofia Pro', Arial,sans-serif;
+    --base-line-height: 1.55;
+    --base-font-percent: 62.5%;
+    --base-font-size: 16px, 1rem;
+    /* specific */
+    --base-font-weight: 400;
+    --button-font-weight: 500;
+    --link-font-weight: 600;
+    --heading-font-weight: 700;
+    /*  */
+    /* Light 300 */
+    /* Regular 400 */
+    /* Medium 500 */
+    /* Semi-bold 600 */
+    /* Bold 700 */
+    /* ExtraBold 800 */
+    /* Black 900 */
+    --light-font-weight: 300;
+    --reg-font-weight: 400;
+    --med-font-weight: 500;
+    --semi-font-weight: 600;
+    --bold-font-weight: 700;
+    --black-font-weight: 900;
+
+}
+
+.sofia {
+    font-family: sofia-pro, sans-serif;
+}
+
+body {
+    font-family: var(--base-font-family);
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    font-weight: var(--base-font-weight);
+    color: var(--color-black);
+    background-color: var(--page-variable);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-family: var(--header-font-family);
+    font-weight: var(--heading-font-weight);
+}
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+}
