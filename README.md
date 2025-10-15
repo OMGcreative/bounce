@@ -7,13 +7,14 @@ To do:
 - [x] update with new design
 - [x] fix links
 - [x] favicons
-- [ ] fix fonts issue
+- [x] add animations
+- [x] fix fonts issue
 - [x] pop-up form UX
 - - [x] noscroll on pop up
 - - [x] pop up close / remove noscroll
 - - [ ] form validation
 - [ ] remove extra links footer
-- [ ] tracking ?
-- [x] remove links in "<"head">"
+- [ ] tracking/analytics ?
+- [x] remove links in "<head>"
 
 link to working [Figma](https://www.figma.com/design/n2e4XHPsjUKrMgkoGTZsjI/Bounce?node-id=66-5245&m=dev)

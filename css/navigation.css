@@ -71,6 +71,7 @@
 
 svg path.bounce {
   	fill: var(--color-black);
+	transition: var(--transition-button);
 }
 svg path.rideshare {
   	fill: var(--color-black);
@@ -80,4 +81,8 @@ svg path.rideshare {
 
 .is-scrolled .rideshare-icon path.rideshare {
   	opacity: 0;
+}
+
+.rideshare-icon:hover svg path.bounce {
+  	fill: var(--color-primary);
 }
