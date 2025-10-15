@@ -1,4 +1,4 @@
-.no_scroll {
+body.no_scroll {
   	overflow: hidden;
 }
 
@@ -6,20 +6,20 @@
   	width: 100%;
   	position: relative;
   	background-color: var(--color-primary);
-  	overflow: hidden;
+  	overflow: visible;
   	/* display: flex; */
   	flex-direction: column;
   	align-items: center;
-  	padding: 7rem 4rem;
+  	padding: 6rem 1rem;
+	padding-top: 7rem;
   	box-sizing: border-box;
   	text-align: center;
   	font-size: var(--fs-16);
   	color: var(--color-black);
   	font-family: var(--font-sofia-pro);
-}
+
 
 /* Popup (modal) */
-.pop-up {
   position: fixed;
   inset: 0;
   display: none;
@@ -41,40 +41,47 @@
   	align-items: center;
   	padding: 2rem;
   	box-sizing: border-box;
-  	gap: 5rem;
+  	gap: 0;
   	max-width: 80rem;
+	max-height: 80vh;
+    overflow: scroll;
+	backdrop-filter: drop-shadow(0 4px 30px rgba(var(--color-primary-dark-rgb), 0.1));
+  	/* box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); */
+  	box-shadow: 0px 4px 16px rgba(var(--color-primary-dark-rgb), 0.1);
+	border: 1px solid var(--color-primary-dark);
 }
+
 .pop-up .section-title {
   	width: 100%;
   	display: flex;
   	flex-direction: column;
   	align-items: center;
-  	gap: 1rem;
+  	gap: 0;
   	max-width: 48rem;
 }
-.tagline-wrapper {
+.pop-up .tagline-wrapper {
   	display: flex;
   	align-items: center;
 }
-.tagline {
+.pop-up .tagline {
   	position: relative;
   	line-height: 150%;
   	font-weight: var(--tagline-font-weight);
 }
-.content {
+.pop-up .content {
   	align-self: stretch;
   	display: flex;
   	flex-direction: column;
   	align-items: center;
-  	gap: 1.5rem;
+  	gap: 0rem;
   	font-size: 3rem;
 }
-.heading {
+.pop-up .heading {
   	align-self: stretch;
   	position: relative;
   	line-height: 120%;
 }
-.text {
+.pop-up .text {
   	align-self: stretch;
   	position: relative;
   	font-size: 1.125rem;
@@ -84,79 +91,21 @@
 @media screen and (max-width: 768px) {
 	.pop-up {
 		padding: var(--padding-32) var(--padding-16);
+		padding-top: 7rem;
 	}
 	.pop-up .container {
 		padding: var(--padding-32) var(--padding-16);
-		gap: var(--gap-32);
+		/* gap: var(--gap-16); */
 	}
 	.pop-up .section-title {
-		gap: var(--gap-16);
+		/* gap: var(--gap-16); */
 	}
-	.content {
+	.pop-up .content {
 		/* font-size: var(--fs-24); */
-		gap: var(--gap-16);
+		/* gap: var(--gap-16); */
 	}
 }
 
 
-.form {
-  	border-radius: var(--br-6);
-  	display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	padding: 1rem;
-  	box-sizing: border-box;
-  	gap: 1.125rem;
-  	/* max-width: 35rem; */
-	width: 100%;
-  	text-align: left;
-  	font-size: var(--fs-14);
-  	color: var(--color-gray-200);
-}
-.input {
-  	align-self: stretch;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: flex-start;
-  	justify-content: center;
-  	gap: var(--gap-10);
-}
-.label {
-  	width: 100%;
-  	position: relative;
-  	line-height: 150%;
-  	display: inline-block;
-}
-.text-input {
-  	align-self: stretch;
-  	height: 3.125rem;
-  	border-radius: var(--br-6);
-  	background-color: var(--color-white);
-  	border: 1px solid var(--color-gray-100);
-  	box-sizing: border-box;
-  	display: flex;
-  	align-items: center;
-  	padding: var(--padding-12);
-}
-.checkbox-group {
-  	align-self: stretch;
-  	display: flex;
-  	align-items: center;
-  	gap: 0.5rem;
-  	color: var(--color-black);
-}
-.contact-pop-up-checkbox {
-  	height: 1.25rem;
-  	width: 1.25rem;
-  	position: relative;
-  	background-color: var(--color-white);
-  	border: 1px solid var(--color-black);
-  	box-sizing: border-box;
-  	overflow: hidden;
-  	flex-shrink: 0;
-}
-.terms-condtions {
-  	text-decoration: underline;
-}
 
 

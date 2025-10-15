@@ -15,7 +15,7 @@ button,
     font-size: var(--fs-16);
     font-weight: var(--button-font-weight);
     line-height: 1.5;
-    padding: var(--padding-12) var(--padding-24);
+    padding: var(--padding-8) var(--padding-24) var(--padding-12) var(--padding-24);
     border-width: 2px;
     border-style: solid;
     border-radius: var(--br-32);
