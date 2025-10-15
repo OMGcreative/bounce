@@ -16,7 +16,17 @@
   	box-sizing: border-box;
   	z-index: 444;
   	font-family: var(--base-font-family);
+	transition: var(--transition);
 }
+
+.is-scrolled.navbar {
+  	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  	background-color: rgba(var(--color-white-rgb), 1);
+	height: 3rem;
+	padding-bottom: 1.3rem;
+	/* padding-top: 1rem; */
+}
+
 .nav-container {
   	align-self: stretch;
   	display: flex;
@@ -33,6 +43,13 @@
   	height: 2.8rem;
   	width: 8.875rem;
   	position: relative;
+	transition: var(--transition);
+	transform: scale(1);
+	transform-origin: left top;
+}
+.is-scrolled .nav-logo {
+  	height: 2.2rem;
+	transform: scale(0.9);
 }
 .rideshare-icon {
   	/* position: absolute;
@@ -52,3 +69,15 @@
   	object-fit: contain;
 }
 
+svg path.bounce {
+  	fill: var(--color-black);
+}
+svg path.rideshare {
+  	fill: var(--color-black);
+	opacity: 0.5;
+	transition: var(--transition);
+}
+
+.is-scrolled .rideshare-icon path.rideshare {
+  	opacity: 0;
+}

@@ -123,7 +123,7 @@ h1.headline {
 h2, h3, h4, h5, h6 {
     line-height: var(--header-line-height);
     letter-spacing: var(--ls-tight);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     /* color: var(--color-black); */
 }
 
