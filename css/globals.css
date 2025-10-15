@@ -102,6 +102,7 @@ body {
   	--padding-24: 1.5rem;
   	--padding-32: 2rem;
   	--padding-64: 4rem;
+  	--padding-128: 8rem;
   	
   	/* BorderRadius */
   	--br-6: 6px;
@@ -123,4 +124,36 @@ body {
   	--width-32: 2rem;
   	--width-48: 3rem;
   	
+}
+
+.animate.move-up {
+  	transform: translateY(5vh);
+	opacity: 0;
+	transition: var(--transition);
+}
+.animate.move-up.in-view {
+  	transform: translateY(0);
+	opacity: 1;
+	transition: var(--transition);
+}
+
+.animate.move-in-from-left {
+  	transform: translateX(-100px);
+	opacity: 0;
+	transition: var(--transition);
+}
+.animate.move-in-from-left.in-view {
+  	transform: translateX(0);
+	opacity: 1;
+	transition: var(--transition);
+}
+.animate.move-in-from-right {
+  	transform: translateX(100px);
+	opacity: 0;
+	transition: var(--transition);
+}
+.animate.move-in-from-right.in-view {
+  	transform: translateX(0);
+	opacity: 1;
+	transition: var(--transition);
 }

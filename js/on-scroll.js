@@ -6,11 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkScroll() {
         var scroll = window.scrollY || window.pageYOffset;
+        // if scrolling stops remove the class
+        if (scroll === 0) {
+            header.classList.remove('is-scrolled');
+            return;
+        }
+        // Add or remove class based on scroll position
+        
         if (scroll >= 50) {
             header.classList.add('is-scrolled');
-        } else {
+        } else {            
             header.classList.remove('is-scrolled');
-        }
+        } 
     }
 
     // Remove class on load (match original behaviour)
