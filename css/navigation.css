@@ -15,7 +15,7 @@
   	padding: 2rem var(--padding-32);
   	box-sizing: border-box;
   	z-index: 444;
-  	font-family: var(--font-roboto);
+  	font-family: var(--base-font-family);
 }
 .nav-container {
   	align-self: stretch;

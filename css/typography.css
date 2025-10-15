@@ -12,7 +12,8 @@
     /* specific */
     --base-font-weight: 400;
     --button-font-weight: 500;
-    --link-font-weight: 600;
+    --link-font-weight: 500;
+    --tagline-font-weight: 500;
     --heading-font-weight: 700;
     /*  */
     /* Light 300 */
@@ -30,8 +31,6 @@
     --black-font-weight: 900;
     
     /* Font */
-  	--font-roboto: Roboto;
-  	--font-sofia-pro: Sofia Pro;
   	
   	/* FontSize */
     --fs-10: 1rem; /* 10px */

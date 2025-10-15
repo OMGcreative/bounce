@@ -8,7 +8,6 @@
 @import url('navigation.css');
 @import url('buttons.css');
 @import url('footer.css');
-@import url('accordion.css');
 @import url('hero.css');
 @import url('pop-up.css');
 @import url('forms.css');
@@ -41,6 +40,12 @@
   	z-index: 1;
   	text-align: center;
 }
+@media screen and (max-width: 768px) {
+	  	.shout {
+		padding: var(--padding-32) var(--padding-16) var(--padding-16);
+  	}
+}
+
 .shout-container {
   	width: 100%;
   	display: flex;
@@ -61,7 +66,7 @@
   	align-self: stretch;
   	position: relative;
   	line-height: 150%;
-  	font-weight: 600;
+  	font-weight: var(--tagline-font-weight);
 }
 
 h2.of-the-time {
@@ -81,6 +86,11 @@ h2.of-the-time {
   	flex-direction: column;
   	align-items: center;
   	padding: 7rem var(--padding-64);  	
+}
+@media screen and (max-width: 768px) {
+	  	.driver_rider-section {
+		padding: var(--padding-32) var(--padding-16) var(--padding-16);
+  	}
 }
 
 .driver_rider-container {

@@ -5,6 +5,8 @@ prelim design
 To do:
 - [x] upload initial commit prelim design
 - [x] update with new design
+- [x] fix links
+- [ ] fix fonts issue
 - [ ] pop-up form UX
 - - [ ] noscroll on pop up
 - - [ ] pop up close / remove noscroll

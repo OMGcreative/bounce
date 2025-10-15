@@ -1,61 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('contactPopup');
-  if (!modal) return;
+// pop-up.js (vanilla JS)
 
-  const triggers = document.querySelectorAll('.pop-up-trigger');
-  const overlay = modal.querySelector('.pop-up');
-  const closeBtns = modal.querySelectorAll('[data-popup-close]');
-  let lastFocus = null;
+document.addEventListener('DOMContentLoaded', function () {
+    var popUp = document.querySelector('.pop-up');
+    var closeButtons = document.querySelectorAll('.close');
+    var popUpButtons = document.querySelectorAll('.pop-up-trigger');
+    var body = document.body;
 
-  const focusableSel = [
-    'a[href]',
-    'area[href]',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    'button:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])'
-  ].join(',');
+    if (!popUp) return; // nothing to do if popup doesn't exist
 
-  function openModal() {
-    lastFocus = document.activeElement;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no_scroll');
-    const first = modal.querySelector(focusableSel);
-    if (first) first.focus();
-    document.addEventListener('keydown', onKeydown);
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no_scroll');
-    document.removeEventListener('keydown', onKeydown);
-    if (lastFocus) lastFocus.focus();
-  }
-
-  function onKeydown(e) {
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'Tab') trapFocus(e);
-  }
-
-  function trapFocus(e) {
-    const focusables = modal.querySelectorAll(focusableSel);
-    if (!focusables.length) return;
-    const first = focusables[0];
-    const last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
+    function showHideToggle() {
+        popUp.classList.toggle('is-visible');
+        body.classList.toggle('no_scroll');
     }
-  }
 
-  triggers.forEach(t => t.addEventListener('click', e => {
-    e.preventDefault();
-    openModal();
-  }));
-  overlay.addEventListener('click', closeModal);
-  closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+    function hidePopup() {
+        popUp.classList.remove('is-visible');
+        body.classList.remove('no_scroll');
+    }
+
+    // toggle when any trigger is clicked
+    popUpButtons.forEach(function (btn) {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            showHideToggle();
+        });
+    });
+
+    // close when any element with .close is clicked
+    closeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            hidePopup();
+        });
+    });
+
+    // close when clicking the backdrop (the element with class .pop-up itself)
+    popUp.addEventListener('click', function (event) {
+        // If the exact element clicked is the popUp container (backdrop) or has class "close"
+        if (event.target === popUp || event.target.classList.contains('close')) {
+            hidePopup();
+        }
+    });
+
+    // Optional: close when pressing Escape
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            hidePopup();
+        }
+    });
 });

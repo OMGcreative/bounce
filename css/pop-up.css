@@ -1,3 +1,7 @@
+.no_scroll {
+  	overflow: hidden;
+}
+
 .pop-up {
   	width: 100%;
   	position: relative;
@@ -14,12 +18,20 @@
   	font-family: var(--font-sofia-pro);
 }
 
-.pop-up.hidden {
-  	display: none;
-}
+/* Popup (modal) */
 .pop-up {
-	display: flex;
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 333;
+  align-items: center;
+  justify-content: center;
 }
+.pop-up.is-visible {
+  /* display: block; */
+  display: flex;
+}
+
 
 .pop-up .container {
   	border-radius: 16px;
@@ -47,7 +59,7 @@
 .tagline {
   	position: relative;
   	line-height: 150%;
-  	font-weight: 600;
+  	font-weight: var(--tagline-font-weight);
 }
 .content {
   	align-self: stretch;
