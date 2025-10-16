@@ -2,7 +2,7 @@
 .header {
   	align-self: stretch;
   	height: calc(100vh - 4.5rem);
-  	background-color: var(--color-white);
+	background-color: var(--white);
   	overflow: hidden;
   	flex-shrink: 0;
   	display: flex;
@@ -12,9 +12,17 @@
   	box-sizing: border-box;
   	z-index: 0;
   	text-align: center;
-  	font-size: 6rem;
+  	/* font-size: 6rem; */
   	color: var(--color-white);
 }
+/* .bounce-generic .header, */
+[class*="generic"] .header {
+	height: auto;
+	background-color: var(--color-grey-light);
+	padding: var(--padding-32) var(--padding-16) var(--padding-16);
+	color: var(--color-black);
+}
+
 .header .container {
   	align-self: stretch;
   	flex: 1;
@@ -44,6 +52,16 @@
 	background-blend-mode: multiply, normal;
   	pointer-events: none;
 	z-index: 111;
+	overflow: hidden;
+}
+
+.bounce-generic .header .container,
+[class*="generic"] .header .container {
+	background-image: unset;
+}
+.bounce-generic .header .container::after,
+[class*="generic"] .header .container::after {
+	background: unset
 }
 
 .header .card {
@@ -58,8 +76,8 @@
   	background-repeat: no-repeat;
   	background-position: top;
 	z-index: 222;
-
 }
+
 .header .card .column {
   	align-self: stretch;
   	display: flex;
@@ -79,22 +97,63 @@
   	position: relative;
   	line-height: 100%;
 }
-.drivers-earn-more {
-    color: var(--Color-White, #FFF);
+.drivers-earn-more,
+.header h1 {
+    color: var(--color-white, #FFF);
   	margin: 0;
 }
+[class*="generic"] h1,
+h1.short-heading {
+	color: var(--color-black, #000);
+}
+.short-heading {
+	/* width: 100%;
+	position: relative;
+	font-size: 3.5rem;
+	line-height: 120%;
+	display: inline-block;
+	font-family: var(--font-sofia-pro);
+	color: var(--color-black);
+	text-align: center; */
+}
+
 .lorem-ipsum-dolor {
   	align-self: stretch;
   	position: relative;
   	font-size: var(--fs-32);
   	line-height: 150%;
 }
+.actions,
 .header .card .actions {
   	display: flex;
   	align-items: flex-start;
   	gap: var(--gap-16);
   	text-align: left;
   	font-size: var(--fs-16);
+}
+
+.actions-wrapper {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: var(--gap-16);
+  	width: 100%;
+  	/* max-width: 400px; */
+}
+
+.join-the-waitlist {
+  	font-size: var(--fs-16);
+  	color: var(--color-white);
+	text-transform: uppercase;
+  	margin: 0;
+}
+
+.actions-wrapper .disclaimer {
+  	font-size: var(--fs-10);
+  	color: var(--color-white);
+	font-weight: 400;
+  	max-width: 45ch;
+  	margin-top: var(--margin-8);
 }
 
 @media screen and (max-width: 768px) {

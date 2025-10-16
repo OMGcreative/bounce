@@ -1,51 +1,85 @@
 // pop-up.js (vanilla JS)
 
 document.addEventListener('DOMContentLoaded', function () {
-    var popUp = document.querySelector('.pop-up');
-    var closeButtons = document.querySelectorAll('.close');
-    var popUpButtons = document.querySelectorAll('.pop-up-trigger');
     var body = document.body;
+    var configs = [
+        { triggerSelector: '.pop-up-trigger-rider', popupSelector: '.pop-up-rider' },
+        { triggerSelector: '.pop-up-trigger-driver', popupSelector: '.pop-up-driver' }
+    ];
+    var entries = [];
 
-    if (!popUp) return; // nothing to do if popup doesn't exist
-
-    function showHideToggle() {
-        popUp.classList.toggle('is-visible');
-        body.classList.toggle('no_scroll');
+    function anyVisible() {
+        return entries.some(function (entry) {
+            return entry.popup.classList.contains('is-visible');
+        });
     }
 
-    function hidePopup() {
-        popUp.classList.remove('is-visible');
-        body.classList.remove('no_scroll');
-    }
-
-    // toggle when any trigger is clicked
-    popUpButtons.forEach(function (btn) {
-        btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            showHideToggle();
-        });
-    });
-
-    // close when any element with .close is clicked
-    closeButtons.forEach(function (btn) {
-        btn.addEventListener('click', function (event) {
-            event.preventDefault();
-            hidePopup();
-        });
-    });
-
-    // close when clicking the backdrop (the element with class .pop-up itself)
-    popUp.addEventListener('click', function (event) {
-        // If the exact element clicked is the popUp container (backdrop) or has class "close"
-        if (event.target === popUp || event.target.classList.contains('close')) {
-            hidePopup();
+    function hideEntry(entry) {
+        entry.popup.classList.remove('is-visible');
+        if (!anyVisible()) {
+            body.classList.remove('no_scroll');
         }
+    }
+
+    function showEntry(entry) {
+        entries.forEach(function (other) {
+            if (other !== entry) {
+                other.popup.classList.remove('is-visible');
+            }
+        });
+        entry.popup.classList.add('is-visible');
+        body.classList.add('no_scroll');
+    }
+
+    configs.forEach(function (config) {
+        var popup = document.querySelector(config.popupSelector);
+        var triggers = document.querySelectorAll(config.triggerSelector);
+
+        if (!popup || triggers.length === 0) {
+            return;
+        }
+
+        var entry = { popup: popup };
+
+        entries.push(entry);
+
+        triggers.forEach(function (btn) {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (popup.classList.contains('is-visible')) {
+                    hideEntry(entry);
+                } else {
+                    showEntry(entry);
+                }
+            });
+        });
+
+        // Keep close behaviour scoped to the active popup instance.
+        var closeButtons = popup.querySelectorAll('.close');
+
+        closeButtons.forEach(function (btn) {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault();
+                hideEntry(entry);
+            });
+        });
+
+        popup.addEventListener('click', function (event) {
+            if (event.target === popup || event.target.classList.contains('close')) {
+                hideEntry(entry);
+            }
+        });
     });
 
-    // Optional: close when pressing Escape
+    if (!entries.length) {
+        return;
+    }
+
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
-            hidePopup();
+            entries.forEach(function (entry) {
+                hideEntry(entry);
+            });
         }
     });
 });

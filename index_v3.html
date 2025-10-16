@@ -15,15 +15,14 @@
   	<link rel="preconnect" href="https://use.typekit.net/low7hsv.css"/>
 
 	<!-- analytics -->
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MTN4R289RT"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE"></script> -->
+	<!-- <script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
 
-	gtag('config', 'G-MTN4R289RT');
-	</script>
+  		gtag('config', 'G-EXAMPLE');
+	</script> -->
 	<!-- end analytics -->
 
 
@@ -73,19 +72,25 @@
                 						<h1 class="headline drivers-earn-more">Drivers earn more<br>Riders pay less</h1>              							
               							<h2 class="subtitle">You’ll be better off with Bounce</h2>
             						</div>
-            						
+            						<div class="actions-wrapper">
+
+										<p class="join-the-waitlist">Join the waitlist</p>
 										
 										<div class="actions">
 
-											<button class="button pop-up-trigger-driver">
+											<button class="button pop-up-trigger">
 												Register as a driver
 											</button>
-											<button class="button-secondary pop-up-trigger-rider">
+											<button class="button-secondary pop-up-trigger">
 												Register as a rider
 											</button>
 										</div>
 
-										
+										<p class="disclaimer">
+											Join our waitlist now and receive a further 15% discount on ALL rides for 3 months from launch date.
+										</p>
+
+            						</div>
           					</div>
         				</div>
       			</div>
@@ -149,37 +154,6 @@
       			</div>
     		</section>
 
-			<!--  -->
-			<!--  -->
-
-			<section class="join-section">
-      			<div class="container">
-        				<div class="card">
-          					<div class="column">
-            						<div class="content">              							
-                						<!-- <h1 class="headline ">Headline</h1>              							
-              							<h2 class="subtitle">Subtitle</h2> -->
-										<h6 class="tagline">Join our waitlist now and receive a further 15% discount on ALL rides for 3 months from launch date.</h6>
-            						</div>
-            															
-									<div class="actions">
-
-										<!-- 
-										<button class="button pop-up-trigger">
-											Register as a driver
-										</button> 
-										-->
-										<button class="button-secondary pop-up-trigger-rider">
-											Register as a rider
-										</button>
-									</div>
-
-										
-          					</div>
-        				</div>
-      			</div>
-    		</section>
-
             <!--  -->
             <!-- footer -->
 			 
@@ -192,7 +166,7 @@
             						<div class="footer-links">
               							<a href="privacy.html" class="privacy-policy">Privacy Policy</a>
               							<a href="terms.html" class="privacy-policy">Terms of Service</a>
-              							<!-- <a href="cookies.html" class="privacy-policy">Cookies Settings</a> -->
+              							<a href="cookies.html" class="privacy-policy">Cookies Settings</a>
             						</div>
           					</div>
         				</div>
@@ -202,16 +176,16 @@
             <!--  -->
             <!-- pop up -->
 
-            <div class="pop-up-driver">
+            <div class="pop-up">
                     <div class="container">
                         <div class="section-title">
-							<div class="tagline-wrapper">
-								<h6 class="tagline">Bounce Rideshare</h6>
-							</div>
-							<div class="content">
-								<h4 class="heading">Join the wait list</h4>
-								<div class="text">Find out how to become a driver for Australia’s newest rideshare</div>
-							</div>
+                                <div class="tagline-wrapper">
+                                    <h6 class="tagline">Bounce Rideshare</h6>
+                                </div>
+                                <div class="content">
+                                    <h4 class="heading">Join the wait list</h4>
+                                    <div class="text">Find out how to become a driver/rider for Australia’s newest rideshare</div>
+                                </div>
                         </div>
                         <form class="form">
 							<div class="form-group">
@@ -220,7 +194,7 @@
 										<input type="text" name="fname" required />
 								</div>
 								<div class="input">
-									<label class="label">Last Name</label>
+									<label class="label">Name</label>
 										<input type="text" name="lname" required />
 								</div>
 							</div>
@@ -228,30 +202,9 @@
 								<label class="label">Email</label>
 								<input type="email" name="email" required />
 							</div>
-							<div class="form-group">
-								<div class="input">
-									<label class="label" for="phone">Phone</label>
-									<input type="tel" name="phone" required />
-								</div>
-								<div class="input">
-									<label class="label" for="postcode">Postcode</label>
-									<input type="number" name="postcode" required />
-								</div>
-							</div>
-
 							<div class="input">
-								<label for="type">Vehicle Type</label>
-								<select id="type" name="type" required class="custom-select">
-									<option value="" disabled selected>Select</option>
-									<option value="sedan">Sedan</option>
-									<option value="luxury">Luxury Sedan</option>
-									<option value="suv">SUV</option>
-									<option value="hybrid">Hybrid/EV</option>
-									<option value="van">Van</option>
-									<option value="luxury-van">Luxury Van</option>
-									<option value="taxi">Taxi</option>
-									<option value="other">Other</option>
-								</select>
+								<label class="label" for="phone">Phone</label>
+								<input type="tel" name="phone" required />
 							</div>
 							
 							<div class="checkbox-group">																
@@ -260,55 +213,6 @@
 							</div>
 
 							<button type="submit" class="button button-mono">
-								Submit
-							</button>
-                        </form>
-                    </div>
-            </div>
-
-			<div class="pop-up-rider">
-                    <div class="container">
-                        <div class="section-title">
-                                <div class="tagline-wrapper">
-                                    <h6 class="tagline">Bounce Rideshare</h6>
-                                </div>
-                                <div class="content">
-                                    <h4 class="heading">Join the wait list</h4>
-                                    <div class="text">Find out how to become a rider with Australia’s newest rideshare</div>
-                                </div>
-                        </div>
-                        <form class="form">
-							<div class="form-group">
-								<div class="input">
-									<label class="label">First Name</label>
-										<input type="text" name="fname" required />
-								</div>
-								<div class="input">
-									<label class="label">Last Name</label>
-										<input type="text" name="lname" required />
-								</div>
-							</div>
-							<div class="input">
-								<label class="label">Email</label>
-								<input type="email" name="email" required />
-							</div>
-							<div class="form-group">
-								<div class="input">
-									<label class="label" for="phone">Phone</label>
-									<input type="tel" name="phone" required />
-								</div>
-								<div class="input">
-									<label class="label" for="postcode">Postcode</label>
-									<input type="number" name="postcode" required />
-								</div>
-							</div>
-							
-							<div class="checkbox-group">																
-								<input type="checkbox" id="disclaimer" name="choices" value="value1" required>
-								<label for="disclaimer">I have read and accept the <a href="terms.html" class="label-link">Terms of Use</a> and <a href="privacy.html" class="label-link">Privacy Policy</a>.</label>								
-							</div>
-
-							<button type="submit" class="button button-primary">
 								Submit
 							</button>
                         </form>

@@ -2,10 +2,16 @@ body.no_scroll {
   	overflow: hidden;
 }
 
-.pop-up {
+.pop-up-driver {
+  	background-color: var(--color-primary);
+}
+.pop-up-rider {
+  	background-color: var(--color-gray);
+}
+
+[class*="pop-up"]:not(button) {
   	width: 100%;
   	position: relative;
-  	background-color: var(--color-primary);
   	overflow: visible;
   	/* display: flex; */
   	flex-direction: column;
@@ -27,15 +33,16 @@ body.no_scroll {
   align-items: center;
   justify-content: center;
 }
-.pop-up.is-visible {
-  /* display: block; */
+[class*="pop-up"].is-visible {
   display: flex;
 }
 
 
-.pop-up .container {
+
+
+[class*="pop-up"] .container {
   	border-radius: 16px;
-  	background-color: rgba(var(--color-white-rgb), 0.95);
+  	background-color: var(--color-whitesmoke);
   	display: flex;
   	flex-direction: column;
   	align-items: center;
@@ -51,7 +58,7 @@ body.no_scroll {
 	border: 1px solid var(--color-primary-dark);
 }
 
-.pop-up .section-title {
+[class*="pop-up"] .section-title {
   	width: 100%;
   	display: flex;
   	flex-direction: column;
@@ -59,48 +66,49 @@ body.no_scroll {
   	gap: 0;
   	max-width: 48rem;
 }
-.pop-up .tagline-wrapper {
+[class*="pop-up"] .tagline-wrapper {
   	display: flex;
   	align-items: center;
 }
-.pop-up .tagline {
+[class*="pop-up"] .tagline {
   	position: relative;
   	line-height: 150%;
+	font-size: 0.8rem;
   	font-weight: var(--tagline-font-weight);
 }
-.pop-up .content {
+[class*="pop-up"] .content {
   	align-self: stretch;
   	display: flex;
   	flex-direction: column;
   	align-items: center;
-  	gap: 0rem;
+  	gap: 1rem;
   	font-size: 3rem;
 }
-.pop-up .heading {
+[class*="pop-up"] .heading {
   	align-self: stretch;
   	position: relative;
   	line-height: 120%;
 }
-.pop-up .text {
+[class*="pop-up"] .text {
   	align-self: stretch;
   	position: relative;
-  	font-size: 1.125rem;
-  	line-height: 150%;
+  	font-size: 1rem;
+  	line-height: 120%;
 }
 
 @media screen and (max-width: 768px) {
-	.pop-up {
+	[class*="pop-up"]:not(button) {
 		padding: var(--padding-32) var(--padding-16);
 		padding-top: 7rem;
 	}
-	.pop-up .container {
+	[class*="pop-up"] .container {
 		padding: var(--padding-32) var(--padding-16);
 		/* gap: var(--gap-16); */
 	}
-	.pop-up .section-title {
+	[class*="pop-up"] .section-title {
 		/* gap: var(--gap-16); */
 	}
-	.pop-up .content {
+	[class*="pop-up"] .content {
 		/* font-size: var(--fs-24); */
 		/* gap: var(--gap-16); */
 	}

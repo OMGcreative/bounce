@@ -7,8 +7,8 @@
     /* primary */
     --color-primary-light: #FF3232;
     --color-primary-medium: #F21616;
-    --color-primary: #C41212;
-    --color-primary-rgb: 196, 18, 18;  
+    --color-primary: #e01a1a;
+    --color-primary-rgb: 223, 26, 26;  
     --color-primary-dark: #960000;
     --color-primary-dark-rgb: 150, 0, 0;
     --bounce-red: var(--color-primary);
@@ -40,6 +40,7 @@
     --color-mono-rgb: 133, 133, 133;
 
     /* Color */
+    --color-gray: #808080;
   	--color-gray-100: #121212;
   	--color-gray-200: rgba(0, 0, 0, 0.6);
   	
