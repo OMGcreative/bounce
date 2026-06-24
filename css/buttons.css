@@ -1,19 +1,20 @@
 /* buttons */
 
 
-button,
+/* button, */
 .button,
 .button-primary,
 /* [class*="button"], */
 [type="button"],
-[type="submit"] {
+[type="submit"],
+button:not(.close) {
     height: 56px;
     /* background-color: var(--color-default);
     border: 2px solid var(--color-default);
     color: var(--color-white); */
     font-family: var(--base-font-family) !important;
     font-size: var(--fs-16);
-    font-weight: var(--button-font-weight);
+    font-weight: var(--button-font-weight) !important;
     line-height: 1.5;
     padding: var(--padding-8) var(--padding-24) var(--padding-12) var(--padding-24);
     border-width: 2px;
@@ -49,6 +50,12 @@ button,
         outline: 2px solid rgba(var(--color-primary-rgb),0.5);
         outline-offset: .5px;
     }
+}
+
+a.button,
+a.button-primary {
+    max-height: 52px;
+    height: auto;
 }
 
 .button,
