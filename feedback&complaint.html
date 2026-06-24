@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bounce Rideshare | Feedback and Complaints</title>
+  <meta name="description" content="Share your feedback or complaints with Bounce Rideshare. We value your input and strive to improve your experience.">
+  <meta property="og:title" content="Bounce Rideshare | Feedback and Complaints">
+  <meta property="og:description" content="Send your feedback or lodge a complaint with Bounce Rideshare’s support team.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBYNRBPY3G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-LBYNRBPY3G');
+  </script>
+
+  <style>
+    .form-select {
+      display: block;
+      width: 100%;
+      padding: .65rem .9rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      cursor: pointer;
+      margin-bottom: .4rem;
+    }
+
+    .form-select:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
+    .role-help-text {
+      margin-top: -6px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .role-choice-box {
+      margin-bottom: 1.5rem;
+    }
+
+    .role-choice-grid {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .role-choice-card {
+      flex: 1;
+      text-align: center;
+      padding: 18px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.2s;
+      user-select: none;
+    }
+
+    .role-choice-card:hover {
+      border-color: #222;
+      background: #fafafa;
+    }
+
+    .role-choice-card.active {
+      border-color: #007bff;
+      background: #e9f2ff;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back-btn {
+      background: transparent;
+      border: none;
+      font-size: 15px;
+      color: #007aff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    .upload-progress {
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .upload-progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .upload-progress-bar-wrapper {
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .upload-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #007bff;
+      border-radius: 6px;
+      transition: width 0.15s linear;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .form-error {
+      color: red;
+    }
+
+    textarea {
+      height: 150px !important;
+      resize: vertical;
+    }
+
+    /* Accordion styles */
+    .accordion-item {
+      border: 2px solid #ddd;
+      /* ✅ thinner, lighter border */
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      background: #fff;
+      justify-content: left !important;
+      box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.05);
+      /* subtle shadow for definition */
+    }
+
+    .accordion-item button {
+      border: none;
+    }
+
+    /* Accordion Header */
+    .accordion-header {
+      width: 100%;
+      text-align: right;
+      background: #f9f9f9;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between !important;
+      /* text left, arrow right */
+      align-items: center;
+      border-radius: 0 !important;
+      outline: none !important;
+    }
+
+    /* Arrow */
+    .accordion-header::after {
+      content: "\25BC";
+      /* ▼ */
+      font-size: 0.8rem;
+      color: #666;
+      /* subtle color */
+      transition: transform 0.2s ease;
+    }
+
+    /* Rotate arrow when active */
+    .accordion-item.active .accordion-header::after {
+      transform: rotate(180deg);
+      /* ▼ → ▲ */
+    }
+
+    /* Accordion content */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1rem;
+      background: #fff;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* When active */
+    .accordion-item.active .accordion-content {
+      max-height: 1000px;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      /* ✅ Always 2 cards per row by default */
+      justify-content: center;
+      align-items: stretch;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    /* ✅ Card styling */
+    .option-card {
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      background-color: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 320px;
+      box-sizing: border-box;
+    }
+
+    .option-card:hover {
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+      border: 0.5px solid #007bff;
+    }
+
+    .option-card img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .option-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+
+    .option-card p.small-muted {
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    /* ✅ Large screens (desktops wider than 1200px): still 2x2 layout */
+    @media (min-width: 1200px) {
+      .options-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ✅ Tablets and medium desktops (width 768px–1199px): still 2x2 */
+    @media (max-width: 1199px) {
+      .options-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ✅ Small tablets / large phones (width
+
+   < 768px): single column */
+    @media (max-width: 767px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .option-card {
+        min-height: 280px;
+      }
+    }
+
+    .forms-area {
+      margin-top: 1.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .note-red {
+      color: #a00;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+
+    .small-muted {
+      font-size: .9rem;
+      color: #666;
+    }
+
+    .form-section {
+      border: 1px solid #eee;
+      padding: 16px;
+      border-radius: 8px;
+      background: #fafafa;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .two-col {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .two-col>* {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: .25rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea,
+    input[type="file"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      padding: .5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: .5rem;
+      /* align-items: center; */
+      margin-top: .5rem;
+    }
+
+    .submit-row {
+      text-align: right;
+      margin-top: 1rem;
+    }
+
+    .button-primary {
+      background: #d9534f;
+      color: #fff;
+      border: none;
+      padding: .6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .policy-block {
+      border-radius: 8px;
+      background: #fff;
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    /* === Modal Styling === */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      animation: scaleUp 0.25s ease;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 0.75rem;
+      color: #111;
+    }
+
+    .modal-content p {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes scaleUp {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Button matches Bounce red */
+    .button-primary {
+      background: #d9534f;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .button-primary:hover {
+      background: #c63e39;
+    }
+
+    /* Submitting state styling */
+    .button-primary.submitting {
+      background: #777;
+      cursor: not-allowed;
+      position: relative;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        /* Stack vertically on small screens */
+      }
+    }
+  </style>
+</head>
+
+<body class="bounce-generic">
+
+  <div class="bounce-wrapper">
+    <!-- navbar (kept the logo and structure you provided) -->
+    <div class="navbar">
+      <div class="nav-container">
+        <div class="nav-content">
+          <div class="nav-logo">
+            <div class="rideshare-icon" aria-label="Bounce Rideshare">
+
+              <a href="/" class="nav-logo-link" aria-label="bounce home">
+                <svg class="bounce_logo" width="144" height="47" viewBox="0 0 144 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="bounce" fill="#E01A1A" d="M69.9995 18.6143C69.9995 16.1829 70.0017 13.7523 69.9987 11.3209C69.9972 10.0637 70.2083 8.8443 70.6154 7.65458C70.9402 6.70517 71.3938 5.81733 71.9618 4.99105C72.7155 3.89479 73.6391 2.95502 74.7205 2.16805C75.4285 1.65256 76.186 1.21939 76.9935 0.885616C78.6767 0.18988 80.4288 -0.110518 82.2579 0.0356015C83.4404 0.130542 84.5721 0.407205 85.661 0.858914C86.2238 1.09256 86.7597 1.38331 87.2769 1.70744C88.0912 2.21849 88.8276 2.823 89.481 3.52021C90.1673 4.2523 90.7533 5.06003 91.2308 5.94342C91.6567 6.73113 91.9919 7.55296 92.2329 8.41262C92.5458 9.52817 92.6768 10.666 92.6745 11.8231C92.6685 15.0251 92.673 18.2271 92.6723 21.4291C92.6723 21.8326 92.6453 22.2309 92.5413 22.627C92.1731 24.0296 90.7511 25.4025 88.761 25.2008C87.1489 25.0376 86.045 23.8501 85.7172 22.6018C85.6221 22.2413 85.6004 21.8771 85.6004 21.5085C85.6004 19.7773 85.6004 18.0454 85.6004 16.3142C85.6004 14.6772 85.6004 13.041 85.6004 11.4047C85.6004 10.8188 85.5166 10.2469 85.2973 9.69876C84.6207 8.00467 82.9143 6.90025 81.0867 7.00705C79.7492 7.08493 78.6879 7.68573 77.9126 8.76865C77.3707 9.52594 77.0938 10.3767 77.0841 11.3016C77.0706 12.5945 77.0534 13.8873 77.0863 15.1794C77.1469 17.5276 77.1065 19.8752 77.1118 22.2228C77.1148 23.4444 77.1028 24.666 77.1088 25.8876C77.1125 26.7094 77.0444 27.5253 76.8865 28.3286C76.6425 29.5695 76.2136 30.7481 75.585 31.8533C75.1898 32.5483 74.7348 33.1988 74.2071 33.8003C73.4318 34.6837 72.5441 35.4343 71.5352 36.0455C70.6199 36.6003 69.6447 37.0246 68.6111 37.2938C67.2565 37.6469 65.8771 37.7463 64.4798 37.5838C63.0219 37.4147 61.6515 36.9756 60.368 36.2814C59.2139 35.6576 58.1976 34.8535 57.3226 33.876C56.6356 33.1083 56.0623 32.2679 55.6005 31.3497C55.1328 30.4195 54.8147 29.4405 54.6156 28.4243C54.4786 27.7241 54.4442 27.0128 54.445 26.3C54.4472 23.655 54.4457 21.0108 54.4457 18.3658C54.4457 17.5951 54.4457 16.8238 54.4457 16.0531C54.4457 15.5628 54.5123 15.0859 54.7062 14.629C55.0871 13.733 55.7285 13.0884 56.6274 12.7102C58.0307 12.1197 59.6203 12.4824 60.6232 13.6136C61.1104 14.1625 61.4038 14.804 61.4801 15.5339C61.5063 15.7809 61.5153 16.0309 61.5153 16.2793C61.5176 19.4932 61.5153 22.7071 61.5191 25.921C61.5191 26.2525 61.5318 26.5863 61.5722 26.9141C61.7758 28.5445 62.986 30.1807 64.9229 30.5642C66.3973 30.8564 67.7048 30.4685 68.7788 29.4123C69.5863 28.6179 70.0137 27.6433 70.0227 26.5092C70.0331 25.1689 70.0623 23.8278 70.0152 22.489C69.9688 21.1962 70.0077 19.9041 70.0025 18.612L69.9995 18.6143ZM126.357 21.2756C128.164 21.2733 129.972 21.2741 131.78 21.2741C135.18 21.2741 138.58 21.2741 141.98 21.2726C142.171 21.2726 142.364 21.2659 142.553 21.2377C143.04 21.1651 143.416 20.9121 143.7 20.5146C143.924 20.2008 144.003 19.8492 144 19.4724C143.992 18.46 143.868 17.4616 143.611 16.4818C143.204 14.9272 142.529 13.4979 141.571 12.1984C140.686 10.9983 139.626 9.97914 138.385 9.14989C136.52 7.90454 134.464 7.19026 132.221 7.00557C130.441 6.85871 128.713 7.08642 127.029 7.67905C125.718 8.14041 124.525 8.80499 123.435 9.65352C122.091 10.6993 121 11.9632 120.157 13.4341C119.12 15.2417 118.577 17.1894 118.5 19.2648C118.462 20.3136 118.583 21.3483 118.811 22.3718C119.078 23.5734 119.527 24.7083 120.141 25.7756C120.944 27.1708 121.978 28.3739 123.241 29.3833C124.543 30.424 125.997 31.1761 127.595 31.6582C128.365 31.8904 129.154 32.0276 129.951 32.1188C130.656 32.1997 131.363 32.2138 132.067 32.1544C133.191 32.0602 134.294 31.8518 135.368 31.4973C136.44 31.1427 137.466 30.6955 138.391 30.0413C139.161 29.4961 139.816 28.8538 140.22 27.9852C140.461 27.4652 140.557 26.9245 140.503 26.3586C140.41 25.4025 139.979 24.6118 139.241 24.0014C138.371 23.2827 137.373 23.032 136.252 23.2626C135.638 23.3895 135.112 23.6854 134.612 24.0363C134.308 24.2491 134 24.4524 133.667 24.6156C132.421 25.223 131.125 25.3343 129.787 24.9931C128.937 24.7758 128.187 24.3648 127.528 23.7945C126.832 23.1907 126.307 22.4638 125.976 21.6042C125.942 21.5174 125.887 21.4321 125.946 21.323C126.068 21.2407 126.215 21.2771 126.354 21.2763L126.357 21.2756ZM126.454 17.007C126.41 17.004 126.366 16.9862 126.299 16.9691C126.316 16.9002 126.319 16.8401 126.345 16.7941C126.708 16.171 127.178 15.6392 127.744 15.1912C128.32 14.7358 128.961 14.3931 129.669 14.1892C130.581 13.9273 131.504 13.8747 132.435 14.0912C134.029 14.4621 135.246 15.35 136.109 16.7221C136.151 16.7882 136.176 16.8653 136.223 16.9691C135.934 17.0136 127.018 17.0418 126.454 17.0062V17.007ZM40.0003 6.96552C32.9068 6.94401 27.2419 12.6234 27.2075 19.5155C27.1731 26.4268 32.8185 32.1418 39.8791 32.1863C46.8971 32.2308 52.6824 26.6278 52.7101 19.6008C52.7131 12.6397 47.0378 6.98703 40.0011 6.96552H40.0003ZM39.9689 13.9659C43.1033 13.9711 45.6554 16.4766 45.6345 19.6126C45.6143 22.6834 43.0636 25.1607 39.9322 25.1459C36.7529 25.131 34.2644 22.5662 34.2891 19.5585C34.2839 16.5026 36.7993 13.9607 39.9689 13.9659ZM103.144 7.59672C101.873 8.00838 100.696 8.60992 99.6147 9.39392C98.0332 10.5406 96.7751 11.964 95.8501 13.6759C95.0373 15.1801 94.5658 16.783 94.4041 18.483C94.2589 20.0139 94.4011 21.5174 94.8173 22.9919C95.5148 25.4589 96.8649 27.5201 98.8303 29.1838C100.216 30.3565 101.792 31.182 103.539 31.6894C104.241 31.8933 104.959 32.015 105.684 32.1077C106.971 32.2724 108.242 32.1744 109.504 31.9178C110.255 31.7658 110.986 31.5395 111.706 31.2777C112.893 30.8468 114.008 30.2808 115.03 29.5428C115.732 29.0362 116.351 28.4465 116.832 27.7256C117.484 26.7487 117.695 25.6948 117.3 24.574C116.846 23.2871 115.942 22.466 114.577 22.2094C113.491 22.0054 112.511 22.2932 111.654 22.9771C111.431 23.1551 111.232 23.362 111.027 23.5623C110.102 24.4709 108.998 25.0235 107.698 25.1496C106.165 25.2987 104.775 24.913 103.565 23.9591C102.301 22.9622 101.602 21.6501 101.448 20.0629C101.367 19.2388 101.48 18.4318 101.774 17.6508C102.304 16.2393 103.255 15.1979 104.611 14.5341C105.681 14.0104 106.815 13.8465 108 14.0416C109.006 14.207 109.895 14.6171 110.67 15.2647C110.953 15.5013 111.198 15.7809 111.47 16.0309C112.552 17.0255 113.806 17.314 115.191 16.8134C117.057 16.1391 118.065 13.9177 117.148 11.9922C116.826 11.3165 116.361 10.749 115.815 10.2432C114.977 9.46512 114.011 8.87545 112.98 8.38814C111.798 7.82962 110.559 7.4328 109.272 7.1821C108.47 7.0256 107.662 6.95736 106.845 6.96626C105.577 6.98629 104.344 7.20806 103.143 7.59746L103.144 7.59672ZM0.00824477 15.4931C0.0329428 17.3519 0.061383 19.2114 0.120509 21.0694C0.158678 22.2791 0.558337 23.414 1.02461 24.5139C1.51557 25.6718 2.18691 26.7332 3.00644 27.6967C4.2376 29.1445 5.72996 30.2556 7.46555 31.0389C8.50961 31.5099 9.58884 31.8792 10.7362 32.0172C11.1351 32.0654 11.54 32.0743 11.9337 32.1455C13.075 32.3525 14.1969 32.127 15.3076 31.9579C16.0702 31.8422 16.8134 31.5477 17.5431 31.2747C19.2779 30.6242 20.7905 29.6162 22.0621 28.2849C23.3067 26.9816 24.2535 25.4834 24.8612 23.7796C25.3275 22.4712 25.6238 21.125 25.6006 19.7454C25.5834 18.7218 25.4053 17.6982 25.2549 16.6806C25.0378 15.2142 24.4451 13.8658 23.6862 12.6152C22.5321 10.7149 20.9874 9.18104 19.007 8.09219C17.8664 7.46544 16.6532 7.05749 15.3846 6.84833C14.2553 6.66215 13.1102 6.66141 11.9763 6.94104C11.0445 7.17097 10.1644 7.50623 9.33437 7.98613C8.95043 8.2079 8.54553 8.40223 8.13165 8.5617C7.68484 8.73453 7.2066 8.423 7.22007 7.98316C7.2298 7.66199 7.14298 7.3386 7.13924 7.01595C7.12652 5.92859 7.14598 4.84122 7.12427 3.7546C7.11529 3.31253 7.09658 2.85192 6.96935 2.43359C6.34741 0.390887 4.21814 -0.407207 2.38075 0.196555C0.866688 0.694993 0.0112385 2.02787 0.00749634 3.57065C1.20895e-05 6.32022 0.00525107 9.06978 0.00525107 11.8186C0.00525107 13.0432 -0.00822059 14.2685 0.00824477 15.4931ZM13.0885 14.0186C16.1241 14.1639 18.4809 16.5374 18.4554 19.5748C18.43 22.6448 16.0657 25.0806 12.7981 25.0969C9.62251 25.1125 7.18714 22.6166 7.13699 19.5488C7.16618 16.536 9.65545 13.8546 13.0892 14.0186H13.0885Z" />
+                    <path class="rideshare" fill="#E01A1A" d="M105.928 41.17C105.746 40.9705 105.527 40.8051 105.271 40.6753C104.896 40.4854 104.467 40.3897 103.988 40.3897C103.384 40.3897 102.842 40.5373 102.361 40.8318C101.881 41.127 101.5 41.5223 101.217 42.0185C100.934 42.5155 100.793 43.074 100.793 43.6941C100.793 44.3141 100.933 44.8652 101.212 45.3696C101.49 45.874 101.872 46.2715 102.356 46.5623C102.84 46.8531 103.387 46.9992 104 46.9992C104.456 46.9992 104.878 46.9102 105.265 46.7314C105.564 46.5942 105.812 46.4051 106.008 46.1655M106.009 46.1662V46.8597H107.449V38.0503H105.928V41.1692M105.702 44.6843C105.55 44.9713 105.342 45.196 105.074 45.3592C104.807 45.5224 104.503 45.6033 104.163 45.6033C103.822 45.6033 103.516 45.5217 103.245 45.3592C102.974 45.196 102.763 44.9713 102.612 44.6843C102.461 44.3972 102.385 44.0679 102.385 43.6948C102.385 43.3217 102.461 43.0043 102.612 42.7172C102.763 42.4302 102.974 42.2054 103.245 42.0422C103.516 41.8798 103.822 41.7982 104.163 41.7982C104.503 41.7982 104.807 41.8798 105.074 42.0422C105.342 42.2054 105.55 42.4302 105.702 42.7172C105.853 43.0043 105.928 43.3299 105.928 43.6948C105.928 44.0597 105.852 44.3972 105.702 44.6843ZM109.828 44.1369C109.849 44.349 109.9 44.5448 109.981 44.7243C110.117 45.0232 110.318 45.2539 110.585 45.4163C110.852 45.5795 111.16 45.6604 111.509 45.6604C111.857 45.6604 112.153 45.5869 112.397 45.4393C112.641 45.2925 112.833 45.0944 112.972 44.846L114.203 45.4512C114.079 45.7538 113.886 46.0216 113.622 46.2545C113.359 46.4866 113.045 46.6699 112.681 46.8011C112.317 46.9332 111.923 46.9992 111.497 46.9992C110.846 46.9992 110.275 46.8516 109.784 46.5571C109.292 46.2619 108.91 45.8629 108.639 45.3585C108.368 44.8541 108.308 44.2956 108.308 43.6829C108.308 43.0703 108.372 42.4828 108.651 41.9896C108.93 41.4971 109.305 41.1069 109.778 40.8199C110.25 40.5328 110.784 40.3889 111.381 40.3889C111.876 40.3889 112.312 40.4705 112.687 40.633C113.063 40.7962 113.383 41.0209 113.645 41.3079C113.909 41.595 114.11 41.9228 114.249 42.2915C114.389 42.6601 114.458 43.0577 114.458 43.4842C114.458 43.6006 114.452 43.7148 114.441 43.8276C114.429 43.9403 114.408 44.0427 114.377 44.1361H109.828M112.746 42.554C112.641 42.2744 112.471 42.0534 112.235 41.8909C111.998 41.7278 111.714 41.6469 111.381 41.6469C111.048 41.6469 110.78 41.7285 110.533 41.8909C110.285 42.0534 110.097 42.2863 109.969 42.5889C109.92 42.7031 109.884 42.8277 109.858 42.9612H112.83C112.821 42.8173 112.793 42.6816 112.745 42.554H112.746ZM95.8179 41.4229V40.5291H94.3779V46.8597H95.9107V43.3336C95.9107 42.8522 96.0424 42.4799 96.3059 42.2165C96.5693 41.9525 96.9173 41.8205 97.3514 41.8205H97.897V40.4587H97.5258C97.0842 40.4587 96.707 40.5514 96.3934 40.7383C96.1524 40.8814 95.9616 41.1099 95.8186 41.4222M98.5646 46.8605H100.097V40.5299H98.5646V46.8605ZM99.3759 38.1905H99.2786C99.0511 38.1905 98.8572 38.2721 98.6948 38.436C98.5324 38.5999 98.4516 38.7957 98.4516 39.0249V39.0902C98.4516 39.3194 98.5324 39.5152 98.6948 39.6784C98.8572 39.8423 99.0518 39.9239 99.2786 39.9239H99.3759C99.6034 39.9239 99.7973 39.8423 99.9597 39.6784C100.122 39.5152 100.203 39.3186 100.203 39.0902V39.0249C100.203 38.7957 100.122 38.5999 99.9597 38.436C99.7973 38.2728 99.6027 38.1905 99.3759 38.1905ZM135.394 41.4229V40.5291H133.954V46.8597H135.487V43.3336C135.487 42.8522 135.618 42.4799 135.882 42.2165C136.145 41.9525 136.493 41.8205 136.927 41.8205H137.473V40.4587H137.102C136.66 40.4587 136.283 40.5514 135.969 40.7383C135.728 40.8814 135.537 41.1099 135.395 41.4222M139.27 44.1369C139.291 44.349 139.342 44.5448 139.423 44.7243C139.559 45.0232 139.76 45.2539 140.027 45.4163C140.295 45.5795 140.602 45.6604 140.951 45.6604C141.3 45.6604 141.595 45.5869 141.839 45.4393C142.083 45.2925 142.275 45.0944 142.414 44.846L143.645 45.4512C143.521 45.7538 143.327 46.0216 143.064 46.2545C142.801 46.4866 142.563 46.6699 142.199 46.8011C141.836 46.9332 141.44 46.9992 141.015 46.9992C140.364 46.9992 139.793 46.8516 139.301 46.5571C138.81 46.2619 138.352 45.8629 138.081 45.3585C137.811 44.8541 137.675 44.2956 137.675 43.6829C137.675 43.0703 137.814 42.4828 138.093 41.9896C138.372 41.4971 138.748 41.1069 139.22 40.8199C139.692 40.5328 140.226 40.3889 140.822 40.3889C141.318 40.3889 141.753 40.4705 142.129 40.633C142.505 40.7962 142.824 41.0209 143.087 41.3079C143.35 41.595 143.552 41.9228 143.691 42.2915C143.83 42.6601 143.9 43.0577 143.9 43.4842C143.9 43.6006 143.894 43.7148 143.883 43.8276C143.871 43.9403 143.85 44.0427 143.819 44.1361H139.269M142.187 42.554C142.083 42.2744 141.913 42.0534 141.676 41.8909C141.44 41.7278 141.155 41.6469 140.822 41.6469C140.489 41.6469 140.222 41.7285 139.974 41.8909C139.726 42.0534 139.539 42.2863 139.411 42.5889C139.362 42.7031 139.325 42.8277 139.3 42.9612H142.272C142.262 42.8173 142.234 42.6816 142.187 42.554H142.187ZM131.486 46.1929C131.403 46.2819 131.317 46.3657 131.224 46.4414C130.996 46.6276 130.74 46.7678 130.457 46.8605C130.174 46.9532 129.859 46.9999 129.51 46.9999C129.069 46.9999 128.684 46.9257 128.355 46.7789C128.026 46.6313 127.772 46.4199 127.594 46.1447C127.416 45.8695 127.327 45.5491 127.327 45.1842C127.327 44.8193 127.406 44.5233 127.565 44.2474C127.723 43.9722 127.965 43.7408 128.291 43.5546C128.615 43.3684 129.026 43.2364 129.522 43.1593L131.392 42.8522V42.6475C131.392 42.376 131.287 42.1491 131.078 41.9666C130.87 41.7849 130.59 41.6929 130.242 41.6929C129.918 41.6929 129.629 41.7819 129.377 41.9607C129.126 42.1394 128.942 42.3679 128.826 42.6475L127.583 42.0422C127.707 41.7085 127.903 41.4199 128.17 41.1752C128.437 40.9311 128.752 40.739 129.117 40.5989C129.481 40.4594 129.876 40.3897 130.302 40.3897C130.82 40.3897 131.278 40.4846 131.672 40.6753C132.067 40.8651 132.375 41.1314 132.596 41.4726C132.816 41.8138 132.926 42.2054 132.926 42.6482V46.8612H131.486V46.1937M129.813 44.3C129.511 44.3542 129.286 44.4491 129.139 44.5849C128.992 44.7206 128.919 44.9016 128.919 45.1263C128.919 45.3511 129.002 45.5165 129.168 45.6441C129.334 45.7716 129.541 45.8362 129.789 45.8362C130.106 45.8362 130.387 45.7687 130.631 45.6322C130.875 45.4964 131.063 45.308 131.194 45.0677C131.326 44.8274 131.392 44.5671 131.392 44.2874V44.0182L129.812 44.2993L129.813 44.3ZM116.956 41.8153C117.103 41.7033 117.304 41.6469 117.56 41.6469C117.877 41.6469 118.164 41.73 118.419 41.8969C118.675 42.0638 118.856 42.2907 118.965 42.5778L120.127 42.0311C119.933 41.5112 119.608 41.1077 119.151 40.8206C118.694 40.5336 118.167 40.3897 117.572 40.3897C117.114 40.3897 116.71 40.4713 116.358 40.6337C116.005 40.7969 115.731 41.0239 115.533 41.3146C115.335 41.6054 115.237 41.9451 115.237 42.333C115.237 42.7676 115.374 43.1459 115.649 43.4678C115.924 43.7897 116.324 44.0249 116.851 44.1717L117.884 44.4625C118.024 44.5011 118.148 44.55 118.256 44.6079C118.365 44.6665 118.452 44.7362 118.518 44.817C118.584 44.8986 118.616 45.0017 118.616 45.1256C118.616 45.3273 118.535 45.4905 118.372 45.6144C118.21 45.7382 117.993 45.8006 117.722 45.8006C117.366 45.8006 117.042 45.6997 116.752 45.4979C116.462 45.2962 116.235 45.0173 116.073 44.6598L114.923 45.2064C115.117 45.7575 115.463 46.1937 115.963 46.5156C116.462 46.8375 117.048 46.9984 117.722 46.9984C118.202 46.9984 118.62 46.9168 118.976 46.7544C119.333 46.5912 119.611 46.3643 119.812 46.0735C120.014 45.7828 120.114 45.4475 120.114 45.067C120.114 44.6168 119.973 44.237 119.69 43.9262C119.408 43.6162 119.007 43.3833 118.488 43.2283L117.478 42.9256C117.331 42.8789 117.201 42.8285 117.089 42.7743C116.977 42.7202 116.89 42.6505 116.828 42.5652C116.766 42.4799 116.735 42.3834 116.735 42.2744C116.735 42.0808 116.808 41.9273 116.956 41.8145V41.8153ZM122.532 41.1433C122.666 40.9586 122.834 40.8058 123.037 40.6864C123.373 40.4883 123.766 40.3897 124.215 40.3897C124.664 40.3897 125.093 40.4906 125.453 40.6923C125.813 40.8941 126.093 41.1752 126.295 41.5364C126.496 41.8969 126.597 42.3145 126.597 42.7869V46.8605H125.075V43.1482C125.075 42.8685 125.021 42.6282 124.913 42.4265C124.804 42.2247 124.655 42.0697 124.465 41.9607C124.275 41.8524 124.053 41.7975 123.798 41.7975C123.543 41.7975 123.329 41.8516 123.135 41.9607C122.942 42.0697 122.791 42.2247 122.683 42.4265C122.574 42.6282 122.52 42.8685 122.52 43.1482V46.8605H120.987L121.063 38.051H122.596L122.533 41.1433H122.532Z" />
+                </svg>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="header">
+      <div class="container">
+        <div class="card">
+          <div class="column">
+            <div class="content">
+              <h1 class="short-headline">Feedback and Complaints</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- content -->
+    <section class="content-section">
+      <div class="content-text rich-text">
+        <p>We welcome feedback from our customers to help us continually improve our platform, making rides safer and easier. Please select one of the options below and complete the forms to send us your comments.</p>
+        <p>
+          Please also review the guidelines for information about how we handle complaints and the expected conduct during the complaint process.
+        </p>
+
+        <!-- Image-based options -->
+        <div class="options-grid" role="list" aria-label="Feedback options">
+          <div class="option-card" role="listitem" tabindex="0" data-target="form-complaint" id="opt-complaint" aria-pressed="false">
+            <img src="images/complaint.png" alt="File a Complaint">
+            <h3>File a Complaint</h3>
+            <p class="small-muted">Report trip, billing, account or app issues.</p>
+          </div>
+
+          <div class="option-card" role="listitem" tabindex="0" data-target="form-compliment" id="opt-compliment" aria-pressed="false">
+            <img src="images/compliment.png" alt="Give a Compliment">
+            <h3>Give a Compliment</h3>
+            <p class="small-muted">Tell us about a positive experience or driver.</p>
+          </div>
+
+          <div class="option-card" role="listitem" tabindex="0" data-target="form-feedback" id="opt-feedback" aria-pressed="false">
+            <img src="images/feedback.png" alt="Give Feedback or Suggest Improvements">
+            <h3>Give Feedback / Suggest Improvements</h3>
+            <p class="small-muted">Suggestions about app, fares, safety or accessibility.</p>
+          </div>
+
+          <div style="display: none;" class="option-card" role="listitem" tabindex="0" data-target="form-incident" id="opt-incident" aria-pressed="false">
+            <img src="images/incident.png" alt="Report a Notifiable Incident">
+            <h3>Report a Notifiable Incident</h3>
+            <p class="small-muted">Serious incidents that must be reported to authorities.</p>
+          </div>
+        </div>
+
+
+        <!-- Forms area -->
+        <div class="forms-area">
+
+          <!-- 1) Complaint form -->
+          <div id="form-complaint" class="form-section hidden" aria-hidden="true">
+
+            <!-- Role Selection -->
+            <div id="complaint-role-selection" class="role-choice-box">
+              <h5>I am a…</h5>
+              <div class="role-choice-grid">
+                <div class="role-choice-card" data-role="rider">
+                  <span>Rider</span>
+                </div>
+
+                <div class="role-choice-card" data-role="driver">
+                  <span>Driver</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rider FORM -->
+            <div id="complaint-form-rider" class="hidden complaint-inner-form">
+              <h5>Rider Complaint Form</h5>
+
+              <form class="contact-form" data-form-type="complaint">
+                <input type="hidden" name="type" value="complaint">
+                <input type="hidden" name="role" value="rider">
+
+                <label>Rider Number (BRN)* </label>
+                <input type="text" name="brn" placeholder="BRN can be found in your account profile" required>
+
+                <div class="two-col">
+                  <div><label>First Name* </label><input type="text" name="firstName" required></div>
+                  <div><label>Last Name* </label><input type="text" name="lastName" required></div>
+                </div>
+
+                <div class="two-col">
+                  <div><label>Phone Number* </label><input type="text" name="phone" placeholder="0412 345 678" required pattern="\d{10}" title="Please enter exactly 10 digits" />
+                  </div>
+                  <div><label>Email Address* </label><input type="email" name="email" required></div>
+                </div>
+
+                <label for="complaintNatureRider">Nature of Complaint*</label>
+                <select class="form-select" id="complaintNatureRider" name="natureOfComplaint" required>
+                  <option value="" disabled selected>Select an option</option>
+
+                  <option value="Driving Behaviour/Safety">Driving Behaviour / Safety</option>
+                  <option value="Rude Driver Behaviour">Rude Driver Behaviour</option>
+                  <option value="Professionalism/Attitude">Professionalism / Attitude</option>
+                  <option value="Punctuality/Reliability">Punctuality / Reliability</option>
+                  <option value="Vehicle condition">Vehicle Condition</option>
+                  <option value="Billing/Fare Disputes">Billing / Fare Disputes</option>
+                  <option value="Harassment/Misconduct">Harassment / Misconduct</option>
+                  <option value="Discrimination">Discrimination</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <label>Details of Complaint*</label>
+                <textarea name="message" rows="6" maxlength="1000" required></textarea>
+
+                <!-- EVIDENCE UPLOAD GROUP 1 -->
+                <label for="incident-evidence">Upload Evidence</label>
+                <input type="file" id="incident-evidence" data-evidence="1" accept="image/*,video/*,.pdf">
+                <input type="hidden" name="evidence" data-evidence-key="1" class="evidence-key-field">
+
+                <div class="upload-progress hidden" data-progress="1">
+                  <div class="upload-progress-header">
+                    <span>Uploading evidence…</span>
+                    <span class="upload-percent">0%</span>
+                  </div>
+                  <div class="upload-progress-bar-wrapper">
+                    <div class="upload-progress-bar"></div>
+                  </div>
+                </div>
+
+                <div class="checkbox-row">
+                  <input id="confirmTrue" type="checkbox" name="confirmTrue" required>
+                  <label for="confirmTrue">I confirm this information is true.</label>
+                </div>
+
+                <div class="checkbox-row">
+                  <input id="consentPrivacy" type="checkbox" name="consentPrivacy" required>
+                  <label for="consentPrivacy">I consent to the Privacy Policy.</label>
+                </div>
+
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAB8QQ1Co16W25QRD" data-callback="onTurnstileSuccess">
+                </div>
+
+                <div class="form-error"></div>
+
+                <div class="submit-row">
+                  <button type="submit" class="button-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Driver FORM -->
+            <div id="complaint-form-driver" class="hidden complaint-inner-form">
+              <h5>Driver Complaint Form</h5>
+
+              <form class="contact-form" data-form-type="complaint">
+                <input type="hidden" name="type" value="complaint">
+                <input type="hidden" name="role" value="driver">
+
+                <label>Driver Number (BDN) *</label>
+                <input type="text" name="bdn" placeholder="BDN can be found in your account profile" required>
+
+                <div class="two-col">
+                  <div><label>First Name* </label><input type="text" name="firstName" required></div>
+                  <div><label>Last Name* </label><input type="text" name="lastName" required></div>
+                </div>
+
+                <div class="two-col">
+                  <div><label>Phone Number* </label><input type="text" name="phone" placeholder="0412 345 678" required pattern="\d{10}" title="Please enter exactly 10 digits" />
+                  </div>
+                  <div><label>Email Address* </label><input type="email" name="email" required></div>
+                </div>
+
+                <label>Trip ID*</label>
+                <input type="text" name="tripId" required placeholder="Enter valid Trip ID">
+
+                <label>Nature of Complaint*</label>
+                <select class="form-select" name="natureOfComplaint" required>
+                  <option value="" selected disabled>Select an option</option>
+                  <option value="Rider No Show/Cancellation">Rider No Show / Cancellation</option>
+                  <option value="Disrespectful/Abusive">Disrespectful / Abusive</option>
+                  <option value="Rider Damaged Car">Rider Damaged Car</option>
+                  <option value="Unsafe Rider Conduct">Unsafe Rider Conduct</option>
+                  <option value="Harassment/Misconduct">Harassment / Misconduct</option>
+                  <option value="Discrimination">Discrimination</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <label>Details of Complaint*</label>
+                <textarea name="message" rows="6" maxlength="1000" required></textarea>
+
+                <!-- EVIDENCE UPLOAD GROUP 2 -->
+                <label>Upload Evidence</label>
+                <input type="file" data-evidence="2" accept="image/*,video/*">
+                <input type="hidden" name="evidence" data-evidence-key="2" class="evidence-key-field">
+
+                <div class="upload-progress hidden" data-progress="2">
+                  <div class="upload-progress-header">
+                    <span>Uploading evidence…</span>
+                    <span class="upload-percent">0%</span>
+                  </div>
+                  <div class="upload-progress-bar-wrapper">
+                    <div class="upload-progress-bar"></div>
+                  </div>
+                </div>
+
+                <div class="checkbox-row">
+                  <input id="confirmTrues" type="checkbox" name="confirmTrue" required>
+                  <label for="confirmTrues">I confirm this information is true.</label>
+                </div>
+
+                <div class="checkbox-row">
+                  <input id="consentPrivacys" type="checkbox" name="consentPrivacy" required>
+                  <label for="consentPrivacys">I consent to the Privacy Policy.</label>
+                </div>
+
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAB8QQ1Co16W25QRD" data-callback="onTurnstileSuccess">
+                </div>
+
+                <div class="form-error"></div>
+
+                <div class="submit-row">
+                  <button type="submit" class="button-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+
+          <!-- 2) Compliment form -->
+          <div id="form-compliment" class="form-section hidden" aria-hidden="true">
+            <h5 style="margin-block-start:0%">Give a Compliment</h5>
+            <p class="small-muted">Tell us what made your experience positive. (Max 1000 characters)</p>
+
+            <form method="POST" class="contact-form" enctype="multipart/form-data">
+              <input type="hidden" name="type" value="compliment">
+              <input type="hidden" name="role" value="rider">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Compliment Submission - Bounce Rideshare">
+              <input type="hidden" name="_next" value="https://bouncerideshare.com.au/thankyou.html">
+
+              <div class="two-col">
+                <div>
+                  <label for="compliment-firstname">First Name*</label>
+                  <input type="text" id="compliment-firstname" name="firstName" required>
+                </div>
+                <div>
+                  <label for="compliment-lastname">Last Name*</label>
+                  <input type="text" id="compliment-lastname" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="two-col" style="margin-top:0.75rem">
+                <div>
+                  <label for="compliment-phone">Phone Number*</label>
+                  <input type="text" name="phone" placeholder="0412 345 678" required pattern="\d{10}" title="Please enter exactly 10 digits" />
+                </div>
+                <div>
+                  <label for="compliment-email">Email Address*</label>
+                  <input type="email" id="compliment-email" name="email" required>
+                </div>
+              </div>
+
+              <label for="compliment-desc" style="margin-top:.75rem">Please describe what made your experience positive*</label>
+              <textarea id="compliment-desc" name="message" rows="6" maxlength="1000" placeholder="What made your experience positive? (max 1000 characters)" required></textarea>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="compliment-true" name="confirmTrue" required>
+                <label for="compliment-true">I confirm this information is true and accurate to the best of my knowledge.</label>
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="compliment-privacy" name="consentPrivacy" required>
+                <label for="compliment-privacy">I consent to the collection and handling of my personal information in accordance with the Privacy Policy.</label>
+              </div>
+
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAB8QQ1Co16W25QRD" data-callback="onTurnstileSuccess">
+              </div>
+
+              <div class="form-error">
+              </div>
+
+              <div class="submit-row">
+                <button type="submit" class="button-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- 3) Feedback / Suggest Improvements -->
+          <div id="form-feedback" class="form-section hidden" aria-hidden="true" enctype="multipart/form-data">
+            <h5 style="margin-block-start:0%">Give Feedback / Suggest Improvements</h5>
+            <p class="small-muted">Select the area your feedback relates to, then describe your suggested improvements (max 1000 characters).</p>
+
+            <form method="POST" class="contact-form">
+              <input type="hidden" name="type" value="feedback">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Feedback Submission - Bounce Rideshare">
+              <input type="hidden" name="_next" value="https://bouncerideshare.com.au/thankyou.html">
+
+              <label for="feedback-subtype">I would like to provide feedback relating to*:</label>
+              <select id="feedback-subtype" name="feedbackSubtype" required>
+                <option value="">Select one</option>
+                <option value="generalApp">General App or Booking Experience</option>
+                <option value="paymentsFares">Payments and Fares</option>
+                <option value="safetyImprovements">Safety Improvements</option>
+                <option value="accessibilityInclusion">Accessibility / Inclusion Feedback</option>
+                <option value="other">Other Feedback</option>
+              </select>
+
+              <div class="two-col" style="margin-top:.75rem">
+                <div>
+                  <label for="feedback-firstname">First Name*</label>
+                  <input type="text" id="feedback-firstname" name="firstName" required>
+                </div>
+                <div>
+                  <label for="feedback-lastname">Last Name*</label>
+                  <input type="text" id="feedback-lastname" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="two-col" style="margin-top:0.75rem">
+                <div>
+                  <label for="feedback-phone">Phone Number*</label>
+                  <input type="text" name="phone" placeholder="0412 345 678" required pattern="\d{10}" title="Please enter exactly 10 digits" />
+                </div>
+                <div>
+                  <label for="feedback-email">Email Address*</label>
+                  <input type="email" id="feedback-email" name="email" required>
+                </div>
+              </div>
+
+              <label for="feedback-desc" style="margin-top:.75rem">Please describe your feedback or suggested improvements*</label>
+              <textarea id="feedback-desc" name="message" rows="6" maxlength="1000" placeholder="Describe your feedback (max 1000 characters)" required></textarea>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="feedback-true" name="confirmTrue" required>
+                <label for="feedback-true">I confirm this information is true and accurate to the best of my knowledge.</label>
+              </div>
+
+              <div class="checkbox-row">
+                <input type="checkbox" id="feedback-privacy" name="consentPrivacy" required>
+                <label for="feedback-privacy">I consent to the collection and handling of my personal information in accordance with the Privacy Policy.</label>
+              </div>
+
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAB8QQ1Co16W25QRD" data-callback="onTurnstileSuccess">
+              </div>
+
+              <div class="form-error">
+              </div>
+
+              <div class="submit-row">
+                <button type="submit" class="button-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- 4) Notifiable Incident -->
+          <div id="form-incident" class="form-section hidden" aria-hidden="true" enctype="multipart/form-data" style="display: none;">
+            <h5 style="margin-block-start:0%">Report a Notifiable Incident</h5>
+
+            <p class="note-red">
+              Notifiable incidents are serious events that must be reported to Safe Transport Victoria under CPV laws within 10 business days.
+              If someone has been seriously injured or killed, or emergency services are required, call <strong>000</strong> immediately.
+              After emergency services have attended, use this form to notify us.
+            </p>
+
+            <!-- ROLE SELECTION -->
+            <div id="incident-role-selection" class="role-choice-box">
+              <h5>I am a…</h5>
+              <div class="role-choice-grid">
+                <div class="role-choice-card" data-role="incident-rider">
+                  <span>Rider</span>
+                </div>
+                <div class="role-choice-card" data-role="incident-driver">
+                  <span>Driver</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIDER FORM -->
+            <div id="incident-form-rider" class="hidden incident-inner-form">
+              <h5>Rider Notifiable Incident Form</h5>
+
+              <form id="riderincidentForm" method="POST" class="contact-form" enctype="multipart/form-data">
+                <input type="hidden" name="type" value="incident">
+                <input type="hidden" name="role" value="rider">
+
+                <!-- BRN FIELD -->
+                <label>Rider Number (BRN)*</label>
+                <input type="text" name="brn" placeholder="BRN can be found in your account profile" required>
+
+                <!-- FIRST NAME / LAST NAME -->
+                <div class="two-col">
+                  <div>
+                    <label>First Name*</label>
+                    <input type="text" name="firstName" required>
+                  </div>
+                  <div>
+                    <label>Last Name*</label>
+                    <input type="text" name="lastName" required>
+                  </div>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="two-col">
+                  <div>
+                    <label>Phone Number*</label>
+                    <input type="text" name="phone" required pattern="\d{10}" placeholder="0412 345 678">
+                  </div>
+                  <div>
+                    <label>Email Address*</label>
+                    <input type="email" name="email" required>
+                  </div>
+                </div>
+
+                <!-- TRIP ID VALIDATION REQUIRED -->
+                <label>Trip ID*</label>
+                <input type="text" name="tripId" id="tripId" required>
+                <p id="tripIdError" style="color:red; display:none;">Trip ID does not exist.</p>
+
+                <!-- DATE -->
+                <label>Date of Incident*</label>
+                <input type="date" name="dateOfincident" required>
+
+                <!-- NATURE OF incident -->
+                <label for="incidentType">Nature of Incident*</label>
+                <select class="form-select" id="incidentType" required>
+                  <option value="">Select an option</option>
+                  <option value="fatality">Fatality</option>
+                  <option value="seriousInjury">Serious Injury</option>
+                  <option value="policeEmergencyAttendance">Police or Emergency Service Attendance</option>
+                  <option value="otherSafetyCritical">Other Safety-Critical Incident</option>
+                  <option value="nearMiss">Near Miss or Potential Hazard</option>
+                  <option value="trafficViolation">Traffic Violation</option>
+                  <option value="driverIntoxication">Driver Intoxication or Impairment</option>
+                  <option value="unsafeDriverConduct">Unsafe Driver Conduct</option>
+                  <option value="other">Other</option>
+                </select>
+
+                <!-- DESCRIPTION -->
+                <label>Details of Incident*</label>
+                <textarea name="message" rows="6" maxlength="2000" required></textarea>
+
+                <!-- EVIDENCE (OPTIONAL) -->
+                <label>Upload Evidence</label>
+                <input type="file" name="evidence" accept="image/*,video/*,.pdf">
+
+                <!-- CONFIRMATION -->
+                <div class="checkbox-row">
+                  <input type="checkbox" required>
+                  <label>I confirm this information is true.</label>
+                </div>
+
+                <div class="checkbox-row">
+                  <input type="checkbox" required>
+                  <label>I consent to the Privacy Policy.</label>
+                </div>
+
+                <p id="generalError" style="color:red; display:none;">Please complete all mandatory fields.</p>
+
+                <div class="submit-row">
+                  <button type="submit" class="button-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+
+            <!-- DRIVER FORM -->
+            <div id="incident-form-driver" class="hidden incident-inner-form">
+              <h5>Driver Notifiable Incident Form</h5>
+
+              <form method="POST" class="contact-form" enctype="multipart/form-data">
+
+                <!-- INTERNAL FIELDS (NOT SHOWN ON WEB, ONLY incident REGISTER) -->
+                <input type="hidden" name="refId"> <!-- Auto-generated incident number -->
+                <input type="hidden" name="incidentDate"> <!-- Auto-fill with today's date -->
+
+                <!-- NEW FIELD ABOVE BDN -->
+                <label>Driver Accreditation Number*</label>
+                <input type="text" name="driverAccreditation" pattern="\d{6}" placeholder="012345" required>
+
+                <label>Bounce Driver Number (BDN)*</label>
+                <input type="text" name="bdn" placeholder="BDN can be found in your account profile" required>
+
+                <!-- NAME FIELDS -->
+                <div class="two-col">
+                  <div>
+                    <label>First Name*</label>
+                    <input type="text" name="firstName" required>
+                  </div>
+                  <div>
+                    <label>Last Name*</label>
+                    <input type="text" name="lastName" required>
+                  </div>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="two-col">
+                  <div>
+                    <label>Phone Number*</label>
+                    <input type="text" name="phone" required pattern="\d{10}" placeholder="0412 345 678">
+                  </div>
+                  <div>
+                    <label>Email Address*</label>
+                    <input type="email" name="email" required>
+                  </div>
+                </div>
+
+                <!-- OPTIONAL RIDER NUMBER -->
+                <label>Rider Number (BRN) (if known)</label>
+                <input type="text" name="brn">
+
+                <!-- INCIDENT DATE/TIME -->
+                <div class="two-col">
+                  <div>
+                    <label>Date of Incident*</label>
+                    <input type="date" name="incidentDate" required>
+                  </div>
+                  <div>
+                    <label>Time of Incident*</label>
+                    <input type="time" name="incidentTime" required>
+                  </div>
+                </div>
+
+                <!-- NEW FIELD -->
+                <label>Trip ID*</label>
+                <input type="text" name="tripId" required>
+
+                <!-- LOCATION W/ GOOGLE AUTOCOMPLETE -->
+                <label>Location* (exact address)<br></label>
+                <input id="autocomplete" type="text" name="location" required>
+
+                <!-- INCIDENT TYPE -->
+                <label for="incident-type-d">Nature of Incident*</label>
+                <select class="form-select" id="incident-type-d" name="incidentType" required>
+                  <option value="">Select an option</option>
+                  <option value="fatality">Fatality</option>
+                  <option value="seriousInjury">Serious Injury</option>
+                  <option value="policeEmergencyAttendance">Police or Emergency Service Attendance</option>
+                  <option value="otherSafetyCritical">Other Safety-Critical Incident</option>
+                  <option value="nearMiss">Near Miss or Potential Hazard</option>
+                  <option value="trafficViolation">Traffic Violation</option>
+                  <option value="seriousSafetyThreats">Serious Safety Threats or Violence</option>
+                  <option value="criminalActivity">Criminal Activity</option>
+                  <option value="other">Other</option>
+                </select>
+
+                <!-- DESCRIPTION -->
+                <label>Description of what occurred (max 2000 characters)*</label>
+                <textarea name="message" rows="6" maxlength="2000" required></textarea>
+
+                <!-- EMERGENCY SERVICES -->
+                <label>Were emergency services called?*</label>
+                <select name="emergencyCalled" required>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+
+                <!-- INJURY -->
+                <label>Were you or any of your passengers injured?*</label>
+                <select name="injured" id="incident-injured-d" required>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+
+                <div id="injuries-details-d" class="hidden">
+                  <label>If yes, provide details*</label>
+                  <input type="text" name="injuriesDescription">
+                </div>
+
+                <!-- UPLOAD -->
+                <label>Upload Supporting Evidence</label>
+                <input type="file" data-evidence="D" accept="image/*,video/*,.pdf">
+
+                <!-- CONFIRMATIONS -->
+                <div class="checkbox-row">
+                  <input type="checkbox" required>
+                  <label>I confirm this information is true.</label>
+                </div>
+
+                <div class="checkbox-row">
+                  <input type="checkbox" required>
+                  <label>I consent to the Privacy Policy.</label>
+                </div>
+
+                <!-- ERROR MESSAGE (HIDDEN UNTIL VALIDATION FAILS) -->
+                <p id="form-error" style="display:none;color:red;font-weight:bold;">
+                  Please complete all mandatory fields.
+                </p>
+
+                <!-- SUBMIT -->
+                <div class="submit-row">
+                  <button type="submit" class="button-primary">Submit</button>
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+
+          <div class="policy-block">
+            <h4 style=" margin: 0px; margin-bottom: 1.5rem;">Policy and Complaint Handling Information</h4>
+            <div class="accordion">
+
+              <!-- 0: Response Timeframes -->
+              <div class="accordion-item">
+                <button class="accordion-header">Response Timeframes</button>
+                <div class="accordion-content">
+                  <p>Once you submit a complaint, feedback, or notifiable incident report, you will receive an email confirmation within one hour confirming that your submission has been received and lodged in our system.</p>
+
+                  <p>We aim to address all submissions promptly and in line with the following timeframes:</p>
+                  <ul>
+                    <li><strong>Notifiable Incidents:</strong> 10 business days</li>
+                    <li><strong>Complaints:</strong> 10 business days</li>
+                    <li><strong>Compliments, Feedback and Suggestions:</strong> 30 calendar days</li>
+                  </ul>
+
+                  <p>If additional time is required to resolve, rectify, or respond to your submission, we will notify you as soon as possible, explain the reason for the delay, and provide an updated timeframe for our response.</p>
+                </div>
+              </div>
+
+              <!-- 1: Our Commitment -->
+              <div class="accordion-item"> <button class="accordion-header">Our Commitment</button>
+                <div class="accordion-content">
+                  <p>We are committed to:</p>
+                  <ul>
+                    <li>Ensuring drivers can contact us easily and receive timely assistance</li>
+                    <li>Responding promptly to feedback and directing it to the appropriate team</li>
+                    <li>Handling all feedback and complaints fairly and impartially</li>
+                    <li>Evaluating evidence carefully before reaching conclusions</li>
+                    <li>Providing courteous, reasonable, and respectful customer service</li>
+                    <li>Managing complaints in a transparent and reasonable manner</li>
+                    <li>Providing a clear explanation of the outcome of a complaint or feedback, and explaining how that decision has been reached</li>
+                  </ul>
+                </div>
+              </div> <!-- 2: Complaint Handling Process -->
+              <div class="accordion-item"> <button class="accordion-header">Our Complaint Handling Process</button>
+                <div class="accordion-content">
+                  <ol>
+                    <li><strong>Complaint received:</strong> Complaints can be submitted through multiple channels — including email, or our dedicated online complaint form.</li>
+                    <li><strong>Complaint recorded and prioritised:</strong> Each complaint is logged and prioritised based on seriousness, safety implications and impact.</li>
+                    <li><strong>Acknowledgement:</strong> You will receive confirmation that we have received your complaint, and a reference number for tracking.</li>
+                    <li><strong>Initial assessment:</strong> We review details, gather initial info, and determine whether urgent action or escalation is required.</li>
+                    <li><strong>Investigation:</strong> Our team collects relevant evidence, consults involved parties, and reviews policies.</li>
+                    <li><strong>Resolution proposed:</strong> We will communicate a proposed resolution (explanation, apology, corrective action, compensation or refund where appropriate).</li>
+                    <li><strong>Resolution acceptance:</strong> You’ll have the opportunity to review and provide feedback on the proposed resolution.</li>
+                    <li><strong>Complaint closed:</strong> When resolved to the satisfaction of both parties, the complaint will be recorded as complete.</li>
+                    <li><strong>Continuous improvement:</strong> We regularly review complaint data to identify trends and improve services and policies.</li>
+                  </ol>
+                </div>
+              </div> <!-- 3: Expected Conduct -->
+              <div class="accordion-item"> <button class="accordion-header">Expected Conduct from Drivers</button>
+                <div class="accordion-content">
+                  <p>We ask that all drivers engage with our team courteously, reasonably, and respectfully.</p>
+                  <h4>Unacceptable Conduct</h4>
+                  <p>Unacceptable conduct includes behaviour that is violent, threatening, abusive or discriminatory, including abusive language, harassment, intimidation, threats to people or property, or repeated excessive communication. If this occurs we will inform you it is unacceptable, explain why, and may end the communication if it continues.</p>
+                  <h4>Unreasonable Conduct</h4>
+                  <p>Unreasonable conduct includes persistent/excessive contact, refusal to follow process, or making demands outside established procedures (e.g., repeatedly contacting us for updates after timeframes given). We will let you know if conduct is unreasonable and give you the opportunity to adjust your approach.</p>
+                  <h4>If the Conduct Continues</h4>
+                  <p>If unacceptable or unreasonable behaviour persists, we may place reasonable limits on contact (restrict to email, set specific times, or limit interaction duration) or, in serious ongoing cases, temporarily or permanently restrict access to the complaint-handling process or platform where necessary. These actions will be proportionate and lawful, and we will inform you if restrictions are applied.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- end forms-area -->
+      </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <h6 id="successTitle"></h6>
+        <p id="successMessage" style="margin-top: 1rem !important;"></p>
+        <button id="returnBtn" class="button-primary">Return</button>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="credits">
+          <div class="row">
+            <div class="copyright">© 2025 Bounce Rideshare. All rights reserved.</div>
+            <div class="footer-links">
+              <a href="privacy.html" class="privacy-policy">Privacy Policy</a>
+              <a href="terms.html" class="privacy-policy">Terms of Service</a>
+              <a href="contact.html" class="privacy-policy">Contact</a>
+              <a href="feedback&complaint.html" class="privacy-policy">Feedback and Complaints</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- small script to handle image clicks / toggling forms and simple UI -->
+  <script>
+    let captchaToken = null;
+
+    // Function to handle Turnstile success
+    function onTurnstileSuccess(token) {
+      captchaToken = token;
+    }
+
+    let autocomplete;
+
+    function initAutocomplete() {
+      const input = document.getElementById("autocomplete");
+      if (input) {
+        autocomplete = new google.maps.places.Autocomplete(input, {
+          types: ["geocode"],
+          componentRestrictions: {
+            country: ["au"]
+          }
+        });
+      }
+    }
+
+    // Load Google Maps Script Automatically
+    (function loadGoogleMaps() {
+      let s = document.createElement("script");
+      s.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvCUQeTcTDhKPA7mKB1ZI5QOqaLKGP2Ds&libraries=places&callback=initAutocomplete";
+      s.async = true;
+      document.head.appendChild(s);
+    })();
+
+    (function() {
+      const optionCards = document.querySelectorAll('.option-card');
+      const forms = document.querySelectorAll('.form-section');
+
+      function clearSelection() {
+        optionCards.forEach(c => {
+          c.classList.remove('selected');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        forms.forEach(f => {
+          f.classList.add('hidden');
+          f.setAttribute('aria-hidden', 'true');
+        });
+      }
+
+      optionCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const target = card.dataset.target;
+          clearSelection();
+          card.classList.add('selected');
+          card.setAttribute('aria-pressed', 'true');
+          const el = document.getElementById(target);
+          if (el) {
+            el.classList.remove('hidden');
+            el.setAttribute('aria-hidden', 'false');
+            // scroll into view
+            el.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+
+        // keyboard accessibility (Enter or Space)
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+
+      // injuries conditional reveal
+      const injuredSelect = document.getElementById('incident-injured');
+      const injuriesDetails = document.getElementById('injuries-details');
+      if (injuredSelect) {
+        injuredSelect.addEventListener('change', () => {
+          if (injuredSelect.value === 'yes') {
+            injuriesDetails.classList.remove('hidden');
+          } else {
+            injuriesDetails.classList.add('hidden');
+          }
+        });
+      }
+
+      const injurySelect = document.getElementById("incident-injured-d");
+      const injuryDetails = document.getElementById("injuries-details-d");
+      if (injurySelect) {
+        injurySelect.addEventListener("change", function() {
+          if (this.value === "yes") {
+            injuryDetails.classList.remove("hidden");
+            injuryDetails.querySelector("input").setAttribute("required", "required");
+          } else {
+            injuryDetails.classList.add("hidden");
+            injuryDetails.querySelector("input").removeAttribute("required");
+          }
+        });
+      }
+
+      // Ensure only one form visible on load
+      clearSelection();
+
+      // Optional: client-side char countdown (example) for complaint-desc & feedback-desc
+      function attachCharCounter(textareaId, max, displayAfter) {
+        const ta = document.getElementById(textareaId);
+        if (!ta) return;
+        const hint = document.createElement('div');
+        hint.style.fontSize = '0.9rem';
+        hint.style.color = '#666';
+        hint.style.marginTop = '.25rem';
+        ta.parentNode.insertBefore(hint, ta.nextSibling);
+
+        function update() {
+          hint.textContent = `${ta.value.length} / ${max} characters`;
+        }
+        ta.addEventListener('input', update);
+        update();
+      }
+      attachCharCounter('complaint-desc', 1000);
+      attachCharCounter('compliment-desc', 1000);
+      attachCharCounter('feedback-desc', 1000);
+      attachCharCounter('incident-desc', 2000);
+
+    })();
+
+    // Simple accordion behaviour
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const currentlyOpen = document.querySelector('.accordion-item.active');
+        if (currentlyOpen && currentlyOpen !== item) {
+          currentlyOpen.classList.remove('active');
+        }
+        item.classList.toggle('active');
+      });
+    });
+
+    function showFormError(form, message) {
+      if (!form) return;
+      let err = form.querySelector('.form-error');
+      if (!err) {
+        err = document.createElement('div');
+        err.className = 'form-error';
+        err.setAttribute('role', 'alert');
+        err.style.color = 'var(--color-red, #d9534f)';
+        err.style.marginTop = '0.5rem';
+        form.appendChild(err);
+      }
+      err.textContent = message;
+    }
+
+    // Success modal text elements
+    const successTitle = document.getElementById("successTitle");
+    const successMessage = document.getElementById("successMessage");
+
+    // Dynamic success messages by form type
+    function setSuccessModalMessage(type) {
+      switch (type) {
+        case "complaint":
+          successTitle.textContent = "Thank you — your complaint has been received.";
+          successMessage.textContent =
+            "We’ve successfully logged your report and our team will now review the details. If we require any further information, we’ll contact you using the details you provided. We appreciate you taking the time to tell us what happened and helping us improve our safety and platform standards.";
+          break;
+
+        case "feedback":
+          successTitle.textContent = "Thank you for your feedback!";
+          successMessage.textContent =
+            "Your submission has been received and shared with our team. We value your input and use it to help improve our services and rider/driver experiences.";
+          break;
+
+        case "compliment":
+          successTitle.textContent = "Thank you!";
+          successMessage.textContent =
+            "Your message has been received and will be passed on to the relevant driver or team members. We appreciate you taking the time to share positive feedback — your feedback helps us continue to deliver great experiences.";
+          break;
+
+        case "incident":
+          successTitle.textContent = "Thank you — your incident report has been received.";
+          successMessage.textContent =
+            "Our Safety & Compliance Team has been notified and will review your submission as a priority. If additional information is needed, we will contact you directly. If you wish to add any further information to your report, please contact us at support@bouncerideshare.com.au.\n\nPlease remember that notifiable incidents must also be reported directly to Safe Transport Victoria within 10 business days. For emergencies, always contact 000 immediately.";
+          break;
+
+        default:
+          successTitle.textContent = "Thank you!";
+          successMessage.textContent = "Your submission has been received.";
+      }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const forms = document.querySelectorAll(".contact-form");
+      const modal = document.getElementById("successModal");
+      const returnBtn = document.getElementById("returnBtn");
+      const formSections = document.querySelectorAll(".form-section");
+      const optionCards = document.querySelectorAll(".option-card");
+
+      // Attach handler to all forms
+      forms.forEach(form => {
+        form.addEventListener("submit", handleFormSubmit);
+      });
+
+      /**
+       * MAIN FORM SUBMISSION HANDLER
+       */
+      async function handleFormSubmit(event) {
+        event.preventDefault()
+        const form = event.target;
+
+        if (!captchaToken) {
+          showFormError(form, "Please complete the CAPTCHA.");
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        // Build FormData (supports file upload)
+        const formData = new FormData(form);
+
+        // UI loading state
+        submitBtn.dataset.originalHtml = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.classList.add("is-loading");
+        submitBtn.innerHTML =
+          '<span class="spinner" aria-hidden="true"></span> Submitting…';
+
+        try {
+          // TEMP: simulate API call with 2-second delay
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+
+          // Simulated success response
+          const type = form.querySelector('input[name="type"]').value;
+          setSuccessModalMessage(type);
+          modal.classList.remove("hidden");
+
+          /*
+          // ORIGINAL API CALL – do not remove
+          const response = await fetch(`/forms`, {
+          method: "POST",
+          body: formData, // DO NOT add headers – browser handles multipart boundary
+          });
+
+          if (response.status === 200) {
+          const type = form.querySelector('input[name="type"]').value;
+          setSuccessModalMessage(type);
+          modal.classList.remove("hidden");
+          } else if (response.status === 409) {
+          showEmailFormError(form, "This email is already registered.");
+          } else {
+          showFormError(form, "Something went wrong.");
+          }
+          */
+        } catch (err) {
+          showFormError(form, "Network error. Please try again.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("is-loading");
+          submitBtn.innerHTML = submitBtn.dataset.originalHtml;
+        }
+      }
+
+      /**
+       * RETURN BUTTON HANDLER
+       * Close modal + reset UI
+       */
+      returnBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+
+        formSections.forEach(section => {
+          section.classList.add("hidden");
+
+          const form = section.querySelector("form");
+          if (form) {
+            form.reset();
+
+            // Clear file inputs
+            const fileInputs = form.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(i => (i.value = ""));
+          }
+
+          // Hide and reset upload progress UI
+          const uploadBox = section.querySelector(".upload-progress");
+          if (uploadBox) {
+            uploadBox.classList.add("hidden");
+
+            const bar = uploadBox.querySelector("progress");
+            if (bar) bar.value = 0;
+
+            const percent = uploadBox.querySelector(".upload-percent");
+            if (percent) percent.textContent = "0%";
+          }
+        });
+
+        optionCards.forEach(c => c.classList.remove("selected"));
+
+        window.location.reload();
+      });
+
+
+      function showEmailFormError(form, msg) {
+        showFormError(form, msg);
+      }
+
+      function clearFormError(form) {
+        let errorBox = form.querySelector(".form-error");
+        if (errorBox) errorBox.classList.add("hidden");
+      }
+
+      const roleCards = document.querySelectorAll(".role-choice-card");
+      const riderForm = document.getElementById("complaint-form-rider");
+      const driverForm = document.getElementById("complaint-form-driver");
+
+      roleCards.forEach(card => {
+        card.addEventListener("click", () => {
+          const role = card.dataset.role;
+
+          // remove active state
+          roleCards.forEach(c => c.classList.remove("active"));
+          card.classList.add("active");
+
+          // hide both
+          riderForm.classList.add("hidden");
+          driverForm.classList.add("hidden");
+
+          // show correct form
+          if (role === "rider") riderForm.classList.remove("hidden");
+          if (role === "driver") driverForm.classList.remove("hidden");
+        });
+      });
+
+      // --- INCIDENT DRIVER/RIDER DYNAMIC LOGIC ---
+      const incidentRoleCards = document.querySelectorAll("#incident-role-selection .role-choice-card");
+      const incidentRiderForm = document.getElementById("incident-form-rider");
+      const incidentDriverForm = document.getElementById("incident-form-driver");
+
+      if (incidentRoleCards.length > 0) {
+        incidentRoleCards.forEach(card => {
+          card.addEventListener("click", () => {
+            const role = card.dataset.role;
+
+            // Remove active state from both cards
+            incidentRoleCards.forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+
+            // Hide both forms first
+            incidentRiderForm.classList.add("hidden");
+            incidentDriverForm.classList.add("hidden");
+
+            // Show the correct one
+            if (role === "incident-rider") {
+              incidentRiderForm.classList.remove("hidden");
+            }
+            if (role === "incident-driver") {
+              incidentDriverForm.classList.remove("hidden");
+            }
+
+            // Scroll to the form on selection
+            (role === "incident-rider" ? incidentRiderForm : incidentDriverForm)
+            .scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        });
+      }
+    });
+
+    async function uploadLargeFile(file, progressElements) {
+      const {
+        bar,
+        percent,
+        container
+      } = progressElements;
+
+      const res = await fetch("/get-upload-url");
+      const {
+        uploadUrl,
+        key
+      } = await res.json();
+
+      // Show progress container
+      container.classList.remove("hidden");
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("PUT", uploadUrl);
+
+      xhr.upload.addEventListener("progress", (e) => {
+        if (e.lengthComputable) {
+          const done = Math.round((e.loaded / e.total) * 100);
+          bar.style.width = done + "%";
+          percent.textContent = done + "%";
+        }
+      });
+
+      return new Promise((resolve, reject) => {
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            resolve(key);
+          } else {
+            reject("Upload failed");
+          }
+        };
+        xhr.onerror = () => reject("Network error");
+        xhr.send(file);
+      });
+    }
+
+    document.addEventListener("change", async (e) => {
+      const input = e.target;
+
+      // Only file inputs with data-evidence attribute
+      if (!input.matches("input[type='file'][data-evidence]")) return;
+
+      const file = input.files[0];
+      if (!file) return;
+
+      const group = input.dataset.evidence; // "1", "2", "3"
+      const form = input.closest("form");
+
+      const progressContainer = form.querySelector(`[data-progress="${group}"]`);
+      const progressBar = progressContainer.querySelector(".upload-progress-bar");
+      const progressPercent = progressContainer.querySelector(".upload-percent");
+
+      const submitBtn = form.querySelector("button[type='submit']");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Uploading…";
+      submitBtn.classList.add("disabled-upload");
+
+      // Show progress UI
+      progressContainer.classList.remove("hidden");
+
+      const progressElements = {
+        container: progressContainer,
+        bar: progressBar,
+        percent: progressPercent,
+      };
+
+      try {
+        const key = await uploadLargeFile(file, progressElements);
+
+        // store to hidden input that matches this evidence group
+        const hiddenKey = form.querySelector(`[data-evidence-key="${group}"]`);
+        hiddenKey.value = key;
+
+        input.value = ""; // clear file input
+      } catch (err) {
+        alert("Upload failed: " + err);
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+      submitBtn.classList.remove("disabled-upload");
+    });
+
+    // Function to allow only digits
+    function allowOnlyDigits(selector, maxLength = 10) {
+      const inputs = document.querySelectorAll(selector);
+      inputs.forEach(input => {
+        input.addEventListener('input', e => {
+          let value = e.target.value.replace(/\D/g, '');
+          if (value.length > maxLength) value = value.slice(0, maxLength);
+          e.target.value = value;
+        });
+      });
+    }
+
+    // Apply to all phone inputs
+    allowOnlyDigits('input[name="phone"]', 10);
+    allowOnlyDigits('input[name="driverAccreditation"]', 6);
+  </script>
+
+  <!-- Keep your existing scripts (deferred) -->
+  <!-- <script src="js/custom.js" defer></script> -->
+  <!-- <script src="js/pop-up.js" defer></script> -->
+  <!-- <script src="js/on-scroll.js" defer></script> -->
+  <!-- <script src="js/scroll-animate.js" defer></script> -->
+
+</body>
+
+</html>
