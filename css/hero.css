@@ -19,7 +19,7 @@
 [class*="generic"] .header {
 	height: auto;
 	background-color: var(--color-grey-light);
-	padding: var(--padding-32) var(--padding-16) var(--padding-16);
+	padding: 0 var(--padding-16) var(--padding-16);
 	color: var(--color-black);
 }
 
@@ -34,7 +34,8 @@
   	justify-content: center;
 	/* background-blend-mode: multiply, normal; */
 	/* background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 1) 80%), url(../assets/bounce_hero.jpg) lightgray -335px -219.15px / 148.692% 125.181% no-repeat; */
-	background-image: url(../assets/bounce_hero.jpg);
+	/* background-image: url(../assets/bounce_hero.jpg); */
+	background-image: url(../assets/bounce_hero_new.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: top;
@@ -158,8 +159,8 @@ h1.short-heading {
 
 @media screen and (max-width: 768px) {
     .header {
-        height: auto;
-        padding: var(--padding-32) var(--padding-16) var(--padding-16);
+        height: calc( 100vh - 4.5rem);
+        padding: 0 var(--padding-16) var(--padding-16);
     }
     
     .header .container {
@@ -168,7 +169,7 @@ h1.short-heading {
     }
     .header .card {
         padding: var(--padding-32) var(--padding-16);
-        justify-content: center;
+        justify-content: flex-end;
     }
     .header .card .medium-length-hero-container {
         font-size: var(--fs-24);

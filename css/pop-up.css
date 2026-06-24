@@ -1,119 +1,216 @@
 body.no_scroll {
-  	overflow: hidden;
+	overflow: hidden;
 }
 
 .pop-up-driver {
-  	background-color: var(--color-primary);
+	background-color: var(--color-primary);
 }
 .pop-up-rider {
-  	background-color: var(--color-gray);
+	background-color: var(--color-gray);
 }
 
-[class*="pop-up"]:not(button) {
-  	width: 100%;
-  	position: relative;
-  	overflow: visible;
-  	/* display: flex; */
-  	flex-direction: column;
-  	align-items: center;
-  	padding: 6rem 1rem;
-	padding-top: 7rem;
-  	box-sizing: border-box;
-  	text-align: center;
-  	font-size: var(--fs-16);
-  	color: var(--color-black);
-  	font-family: var(--font-sofia-pro);
+[class*='pop-up']:not(button) {
+	width: 100%;
+	position: relative;
+	/* overflow: scroll; */
+	/* display: flex; */
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 1rem;
+	/* padding-top: 7rem; */
+	box-sizing: border-box;
+	text-align: center;
+	font-size: var(--fs-16);
+	color: var(--color-black);
+	font-family: var(--font-sofia-pro);
 
-
-/* Popup (modal) */
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 333;
-  align-items: center;
-  justify-content: center;
+	/* Popup (modal) */
+	position: fixed;
+	inset: 0;
+	display: none;
+	z-index: 555;
+	align-items: center;
+	justify-content: center;
 }
-[class*="pop-up"].is-visible {
-  display: flex;
+[class*='pop-up'].is-visible {
+	display: flex;
+}
+@media screen and (max-width: 768px) {
+	[class*='pop-up']:not(button) {
+		overflow-y: scroll;
+	}
+}
+@media screen and (max-height: 768px) {
+	[class*='pop-up']:not(button) {
+		overflow-y: scroll;
+		justify-content: flex-start;
+		padding-top: 3rem;
+	}
+}
+@media screen and (max-width: 576px) {
+	[class*='pop-up']:not(button) {
+		overflow-y: scroll;
+		justify-content: flex-start;
+		padding-top: 3rem;
+	}
 }
 
-
-
-
-[class*="pop-up"] .container {
-  	border-radius: 16px;
-  	background-color: var(--color-whitesmoke);
-  	display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	padding: 2rem;
-  	box-sizing: border-box;
-  	gap: 0;
-  	max-width: 80rem;
-	max-height: 80vh;
-    overflow: scroll;
+[class*='pop-up'] .container {
+	border-radius: 16px;
+	background-color: var(--color-whitesmoke);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+	box-sizing: border-box;
+	gap: 0;
+	width: 95%;
+	max-width: 490px;
+	/* max-height: 80vh; */
+	/* overflow: scroll; */
 	backdrop-filter: drop-shadow(0 4px 30px rgba(var(--color-primary-dark-rgb), 0.1));
-  	/* box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); */
-  	box-shadow: 0px 4px 16px rgba(var(--color-primary-dark-rgb), 0.1);
+	/* box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); */
+	box-shadow: 0px 4px 16px rgba(var(--color-primary-dark-rgb), 0.1);
 	border: 1px solid var(--color-primary-dark);
 }
 
-[class*="pop-up"] .section-title {
-  	width: 100%;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	gap: 0;
-  	max-width: 48rem;
+[class*='pop-up'] .section-title {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+	max-width: 48rem;
 }
-[class*="pop-up"] .tagline-wrapper {
-  	display: flex;
-  	align-items: center;
+[class*='pop-up'] .tagline-wrapper {
+	display: flex;
+	align-items: center;
 }
-[class*="pop-up"] .tagline {
-  	position: relative;
-  	line-height: 150%;
+[class*='pop-up'] .tagline {
+	position: relative;
+	line-height: 150%;
 	font-size: 0.8rem;
-  	font-weight: var(--tagline-font-weight);
+	font-weight: var(--tagline-font-weight);
 }
-[class*="pop-up"] .content {
-  	align-self: stretch;
-  	display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	gap: 1rem;
-  	font-size: 3rem;
+[class*='pop-up'] .content {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	font-size: 3rem;
 }
-[class*="pop-up"] .heading {
-  	align-self: stretch;
-  	position: relative;
-  	line-height: 120%;
+[class*='pop-up'] .heading {
+	align-self: stretch;
+	position: relative;
+	line-height: 115%;
 }
-[class*="pop-up"] .text {
-  	align-self: stretch;
-  	position: relative;
-  	font-size: 1rem;
-  	line-height: 120%;
+[class*='pop-up'] .success_msg .heading {
+	text-align: left;
+}
+[class*='pop-up'] .text {
+	display: flex;
+	/* align-self: stretch; */
+	position: relative;
+	font-size: 1rem;
+	line-height: 120%;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	max-width: 420px;
+}
+
+[class*='pop-up'] .text p {
+	text-align: left;
+	margin-bottom: 1rem;
+	max-width: 45ch;
+}
+
+/* .pop-up-rider svg path.bounce, */
+[class*='pop-up'] svg path.bounce {
+	fill: var(--color-primary);
 }
 
 @media screen and (max-width: 768px) {
-	[class*="pop-up"]:not(button) {
-		padding: var(--padding-32) var(--padding-16);
-		padding-top: 7rem;
+	[class*='pop-up']:not(button) {
+		/* padding: var(--padding-16); */
+		/* padding-top: 7rem; */
 	}
-	[class*="pop-up"] .container {
+	[class*='pop-up'] .container {
 		padding: var(--padding-32) var(--padding-16);
 		/* gap: var(--gap-16); */
+		/* margin-top: 6rem */
 	}
-	[class*="pop-up"] .section-title {
+	[class*='pop-up'] .section-title {
 		/* gap: var(--gap-16); */
 	}
-	[class*="pop-up"] .content {
+	[class*='pop-up'] .content {
 		/* font-size: var(--fs-24); */
 		/* gap: var(--gap-16); */
 	}
 }
+@media screen and (max-height: 768px) {
+	[class*='pop-up']:not(button) .container {
+		/* margin-top: 6rem */
+	}
+}
 
+.close-button-wrapper {
+	position: absolute;
+	top: -0.75rem;
+	right: -0.5rem;
+}
+.close {
+	border-radius: 50%;
+	background-color: black;
+	color: var(--color-white);
+	height: 1.5rem;
+	width: 1.5rem;
+	border: 1px solid black;
+}
+.close:hover {
+	background-color: var(--color-white);
+	color: black;
+	cursor: pointer;
+}
 
+.success_msg {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	max-width: 420px;
+}
 
+.submitted [class*='form-wrapper'] {
+	display: none;
+}
 
+.submitted .success_msg {
+	display: flex;
+}
+
+.is-loading {
+	pointer-events: none;
+	opacity: 0.6;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spinner {
+	border: 4px solid var(--color-grey-light);
+	border-top: 4px solid var(--color-primary);
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	animation: spin 1s linear infinite;
+	margin: 0 1rem 0 0;
+}
